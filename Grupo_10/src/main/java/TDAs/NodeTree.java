@@ -15,7 +15,12 @@ public class NodeTree<T> {
         this.content = content;
         this.children = children;
     }
-
+    
+    public NodeTree(T content) {
+        this.content = content;
+        this.children = null;
+    }
+    
     public T getContent() {
         return content;
     }
