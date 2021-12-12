@@ -15,13 +15,14 @@ public class EjercicioF {
         System.out.println(b);
         b.winOrLose('x','0');
         System.out.println(b.waysToWin('x'));
-        System.out.println(b.minimax('x', '0'));
+        System.out.println(b.boardUtility('x', '0'));
         
-        ArrayList<Board> boards = b.generateAlternatives('x');
+        /*ArrayList<Board> boards = b.generateAlternatives('x');
         for(Board boa:boards){
             System.out.print(boa);
-            System.out.println(boa.minimax('x', '0'));
-        }
-        
+            System.out.println(boa.boardUtility('x', '0'));
+        }*/
+       
+        System.out.print(b.minimax('x', 'c'));
     }
 }

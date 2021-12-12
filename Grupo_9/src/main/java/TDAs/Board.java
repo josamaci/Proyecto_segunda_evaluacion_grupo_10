@@ -1,6 +1,8 @@
 package TDAs;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Board {
     Character board[][] = new Character[3][3];
@@ -193,7 +195,46 @@ public class Board {
     return i;
     }
     
-    public int minimax(Character you, Character rival){
+    public int boardUtility(Character you, Character rival){
         return waysToWin(you) - waysToWin(rival);
+    }
+    
+    public Map<Board, Integer> generateMinimax(Character you, Character rival){
+        int i = -100;
+        ArrayList<Board> alternativesYou = this.generateAlternatives(you);
+        Map<Board, Integer> mapYou = new HashMap<>();
+        for(Board boa: alternativesYou){
+            int j = 0;
+            ArrayList<Board> alternativesRival = boa.generateAlternatives(rival);
+            j = alternativesRival.get(0).boardUtility(you, rival);
+            for(Board board: alternativesRival){
+                mapYou.put(boa, j);
+                if(board.boardUtility(you, rival)<j){
+                    j = board.boardUtility(you, rival);
+                    mapYou.replace(boa,j);
+                }
+            }
+        }
+        return mapYou;
+    }
+    
+    public Board minimax(Character you, Character rival){
+        Map<Board, Integer> mapYou = this.generateMinimax(you, rival);
+        int content = -10;
+        Board b = null;
+        int cont = 0;
+        for(int i: mapYou.values()){
+            if(i>content){
+                int cont2=0;
+                for(Board boa: mapYou.keySet()){
+                    if(cont == cont2){
+                        b = new Board(boa.getBoard());
+                        return b;
+                    }
+                }
+            }
+            cont++;
+        }
+        return b;
     }
 }
