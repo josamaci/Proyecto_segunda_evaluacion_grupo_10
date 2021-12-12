@@ -1,4 +1,4 @@
-package ejercicio.f;
+package TDAs;
 
 import java.util.ArrayList;
 
@@ -191,5 +191,9 @@ public class Board {
             }
         }
     return i;
+    }
+    
+    public int minimax(Character you, Character rival){
+        return waysToWin(you) - waysToWin(rival);
     }
 }

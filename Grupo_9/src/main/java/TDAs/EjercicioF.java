@@ -1,9 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package ejercicio.f;
+package TDAs;
 
 import java.util.ArrayList;
 
@@ -20,12 +15,12 @@ public class EjercicioF {
         System.out.println(b);
         b.winOrLose('x','0');
         System.out.println(b.waysToWin('x'));
+        System.out.println(b.minimax('x', '0'));
         
         ArrayList<Board> boards = b.generateAlternatives('x');
         for(Board boa:boards){
             System.out.print(boa);
-            System.out.println(boa.waysToWin('x'));
-            System.out.println(boa.waysToWin('0'));
+            System.out.println(boa.minimax('x', '0'));
         }
         
     }
