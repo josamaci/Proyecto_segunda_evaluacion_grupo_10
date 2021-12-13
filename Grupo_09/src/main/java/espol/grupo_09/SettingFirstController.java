@@ -5,6 +5,7 @@
  */
 package espol.grupo_09;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -21,29 +22,21 @@ import javafx.scene.layout.Pane;
  *
  * @author JMaci
  */
-public class SettingCategoryController implements Initializable {
+public class SettingFirstController implements Initializable {
 
 
     @FXML
     private Pane pCat;
     @FXML
-    private Button btBackToBS;
-    @FXML
-    private Label lbTitle;
-    @FXML
-    private ToggleButton btCategoryAnimal;
-    @FXML
     private ToggleGroup btGroupCategory;
     @FXML
-    private ToggleButton btCategoryColor;
+    private Button btBackToChar;
     @FXML
-    private ToggleButton btCategoryFruit;
+    private ToggleButton btYou;
     @FXML
-    private ToggleButton btCategoryNumber;
+    private ToggleButton btPC;
     @FXML
-    private ToggleButton btCategoryRandom;
-    @FXML
-    private Button btNextSetting2;
+    private Button btPlayboard;
     /**
      * Initializes the controller class.
      */
@@ -51,33 +44,24 @@ public class SettingCategoryController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-    
+
     @FXML
-    private void switchToBoardSize(ActionEvent event) {
+    private void selectYou(ActionEvent event) {
     }
 
     @FXML
-    private void catAnimals(ActionEvent event) {
+    private void selectPC(ActionEvent event) {
     }
 
     @FXML
-    private void catColors(ActionEvent event) {
+    private void switchToPlayboard(ActionEvent event) throws IOException {
+        App.setRoot("Playboard");
     }
 
     @FXML
-    private void catFruits(ActionEvent event) {
+    private void switchBackToChar(ActionEvent event) throws IOException {
+        App.setRoot("SettingChar");
     }
 
-    @FXML
-    private void catNumbers(ActionEvent event) {
-    }
-
-    @FXML
-    private void catRandom(ActionEvent event) {
-    }
-
-    @FXML
-    private void switchToGameMode(ActionEvent event) {
-    }
 
 }

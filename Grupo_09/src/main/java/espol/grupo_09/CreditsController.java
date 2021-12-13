@@ -5,6 +5,7 @@
  */
 package espol.grupo_09;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -26,10 +27,6 @@ public class CreditsController implements Initializable {
     @FXML
     private Label lblWinLose;
     @FXML
-    private Label lbPoints;
-    @FXML
-    private Label lblPoints;
-    @FXML
     private Button btMainMenu;
 
     /**
@@ -41,7 +38,8 @@ public class CreditsController implements Initializable {
     }    
 
     @FXML
-    private void backToTheTitle(ActionEvent event) {
+    private void backToTheTitle(ActionEvent event) throws IOException {
+        App.setRoot("MainMenu");
     }
     
 }

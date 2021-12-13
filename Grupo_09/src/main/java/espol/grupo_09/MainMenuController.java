@@ -10,7 +10,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-
+import java.io.IOException;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
@@ -25,25 +25,16 @@ public class MainMenuController implements Initializable {
     @FXML
     private BorderPane bpMenu;
     @FXML
-    private Label lbTitle;
-    @FXML
     private Button btPlay;
-    @FXML
-    private Button btOptions;
-    /**
-     * Initializes the controller class.
-     */
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
     
     @FXML
-    private void switchToBoardSize(ActionEvent event) {
-    }
-
-    @FXML
-    private void switchToSettingsLanguage(ActionEvent event) {
+    private void switchToChar(ActionEvent event) throws IOException{
+        App.setRoot("SettingChar");
     }
 
 }

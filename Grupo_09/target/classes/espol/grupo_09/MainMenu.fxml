@@ -8,38 +8,30 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="bpMenu" prefHeight="640.0" prefWidth="360.0" styleClass="bpMenu" stylesheets="@../../Styles/mainmenu.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="espol.grupo_09.MainMenuController">
+<BorderPane fx:id="bpMenu" prefHeight="640.0" prefWidth="360.0" styleClass="bpMenu" stylesheets="@../../Styles/windows.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="espol.grupo_09.MainMenuController">
    <bottom>
       <HBox alignment="CENTER" prefHeight="76.0" prefWidth="360.0" BorderPane.alignment="CENTER" />
    </bottom>
    <top>
       <VBox prefHeight="77.0" prefWidth="360.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="lbTitle" alignment="CENTER" prefHeight="80.0" prefWidth="360.0" text="wordhunter" textFill="WHITE">
+            <Label alignment="CENTER" prefHeight="80.0" prefWidth="360.0" text=" 3 ON A ROW" textFill="WHITE">
                <font>
-                  <Font name="Gill Sans MT" size="45.0" />
+                  <Font name="System Bold" size="46.0" />
                </font>
                <VBox.margin>
-                  <Insets top="10.0" />
+                  <Insets top="90.0" />
                </VBox.margin>
             </Label>
          </children>
       </VBox>
    </top>
    <center>
-      <VBox alignment="CENTER" prefHeight="462.0" prefWidth="360.0" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" prefHeight="421.0" prefWidth="360.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="btPlay" alignment="CENTER" contentDisplay="CENTER" onAction="#switchToBoardSize" prefHeight="66.0" prefWidth="138.0" styleClass="changeButton" stylesheets="@../../Styles/normalButton.css" text="Let's Play!" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="btPlay" alignment="CENTER" contentDisplay="CENTER" onAction="#switchToChar" prefHeight="74.0" prefWidth="153.0" styleClass="changeButton" stylesheets="@../../Styles/buttons.css" text="Let's Play!" textAlignment="CENTER" textFill="WHITE">
                <font>
-                  <Font name="Gill Sans MT" size="24.0" />
-               </font>
-               <VBox.margin>
-                  <Insets bottom="10.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="btOptions" alignment="CENTER" contentDisplay="CENTER" onAction="#switchToSettingsLanguage" prefHeight="66.0" prefWidth="138.0" styleClass="changeButton" stylesheets="@../../Styles/normalButton.css" text="Language" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font name="Gill Sans MT" size="24.0" />
+                  <Font name="System Bold" size="24.0" />
                </font>
                <VBox.margin>
                   <Insets bottom="10.0" />

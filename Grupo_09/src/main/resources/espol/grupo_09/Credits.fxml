@@ -7,34 +7,21 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="espol.grupo_09.CreditsController">
+<FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="360.0" styleClass="bpMenu" stylesheets="@../../Styles/windows.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="espol.grupo_09.CreditsController">
    <children>
-      <VBox id="vbCredits" fx:id="vbCredits" alignment="CENTER" prefHeight="640.0" prefWidth="360.0" styleClass="vbCredits" stylesheets="@../../Styles/credits.css">
+      <VBox id="vbCredits" fx:id="vbCredits" alignment="CENTER" prefHeight="640.0" prefWidth="360.0" styleClass="bpMenu" stylesheets="@../../Styles/windows.css">
          <children>
             <Label fx:id="lblWinLose" text="YOU WIN!" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="35.0" />
                </font>
             </Label>
-            <Label fx:id="lbPoints" text="POINTS:" textFill="WHITE">
-               <VBox.margin>
-                  <Insets top="15.0" />
-               </VBox.margin>
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Label>
-            <Label fx:id="lblPoints" text="0" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="40.0" />
-               </font>
-            </Label>
-            <Button fx:id="btMainMenu" mnemonicParsing="false" onAction="#backToTheTitle" prefHeight="59.0" prefWidth="153.0" styleClass="changeButton" stylesheets="@../../Styles/normalButton.css" text="Back to the Title" textFill="WHITE">
+            <Button fx:id="btMainMenu" mnemonicParsing="false" onAction="#backToTheTitle" prefHeight="60.0" prefWidth="160.0" styleClass="changeButton" stylesheets="@../../Styles/buttons.css" text="Main Menu" textFill="WHITE">
                <VBox.margin>
                   <Insets top="75.0" />
                </VBox.margin>
                <font>
-                  <Font name="System Bold" size="18.0" />
+                  <Font name="System Bold" size="21.0" />
                </font>
             </Button>
          </children>

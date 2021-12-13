@@ -5,18 +5,15 @@
  */
 package espol.grupo_09;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.shape.Circle;
 
 /**
  * FXML Controller class
@@ -28,39 +25,9 @@ public class PlayboardController implements Initializable {
     @FXML
     private BorderPane bpPlayboard;
     @FXML
-    private Label lbPoints;
-    @FXML
-    private Label lblPoints;
-    @FXML
-    private Label lbTime;
-    @FXML
-    private Label lblTime;
-    @FXML
-    private Circle health1;
-    @FXML
-    private Circle health2;
-    @FXML
-    private Circle health3;
-    @FXML
-    private HBox hbWords;
-    @FXML
-    private Button btAddRow;
-    @FXML
-    private Button btAddColumn;
-    @FXML
-    private Button btDeleteRow;
-    @FXML
-    private Button btDeleteColumn;
-    @FXML
-    private Button btMoveLeft;
-    @FXML
-    private Button btMoveRight;
-    @FXML
-    private ComboBox<?> cbRows;
-    @FXML
     private Button btSurrender;
     @FXML
-    private Pane matrixPane;
+    private Pane Pane;
 
     /**
      * Initializes the controller class.
@@ -71,7 +38,8 @@ public class PlayboardController implements Initializable {
     }    
 
     @FXML
-    private void surrender(ActionEvent event) {
+    private void surrender(ActionEvent event) throws IOException {
+        App.setRoot("Credits");
     }
     
 }
