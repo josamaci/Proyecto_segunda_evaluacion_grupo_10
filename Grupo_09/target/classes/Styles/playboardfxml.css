@@ -1,0 +1,8 @@
+/*
+ * Empty Stylesheet file.
+ */
+.bpPlayboard {
+    -fx-background-image: url(/images/a1.png);
+    -fx-background-size: 900 900;
+    -fx-background-position: center center;
+}

@@ -1,0 +1,17 @@
+.optionButton{
+    -fx-background-color: #00ccff;
+    -fx-background-radius: 15 15 15 15;
+    -fx-background-insets: 2 2 2 2 ;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(one-pass-box, darkcyan, 0.0, 0.0, 0.0, 10);
+}
+.optionButton:hover{
+    -fx-background-color: #0099ff;
+}
+
+.optionButton:selected{
+    -fx-background-color: #0099ff;
+    -fx-text-fill: WHITE;
+    -fx-translate-y: 5;
+    -fx-effect: dropshadow(one-pass-box, darkcyan, 0.0, 0.0, 0.0, 5);
+}

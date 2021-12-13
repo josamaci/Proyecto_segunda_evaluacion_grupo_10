@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="espol.grupo_09.CreditsController">
+   <children>
+      <VBox id="vbCredits" fx:id="vbCredits" alignment="CENTER" prefHeight="640.0" prefWidth="360.0" styleClass="vbCredits" stylesheets="@../../Styles/credits.css">
+         <children>
+            <Label fx:id="lblWinLose" text="YOU WIN!" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="35.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbPoints" text="POINTS:" textFill="WHITE">
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblPoints" text="0" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="40.0" />
+               </font>
+            </Label>
+            <Button fx:id="btMainMenu" mnemonicParsing="false" onAction="#backToTheTitle" prefHeight="59.0" prefWidth="153.0" styleClass="changeButton" stylesheets="@../../Styles/normalButton.css" text="Back to the Title" textFill="WHITE">
+               <VBox.margin>
+                  <Insets top="75.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+   </children>
+</FlowPane>
