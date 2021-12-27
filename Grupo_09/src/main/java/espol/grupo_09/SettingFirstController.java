@@ -31,19 +31,29 @@ public class SettingFirstController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        btPlayboard.setDisable(true);
     }
 
     @FXML
     private void selectYou(ActionEvent event) {
-        Reader.setStarting(true);
+        if (!btYou.isSelected()) {
+            btPlayboard.setDisable(true);
+        } else {
+            Reader.setStarting(true);
+            btPlayboard.setDisable(false);
+        }
+
     }
-    
-    
 
     @FXML
     private void selectPC(ActionEvent event) {
-        Reader.setStarting(false);
+        if (!btPC.isSelected()) {
+            btPlayboard.setDisable(true);
+        } else {
+            Reader.setStarting(false);
+            btPlayboard.setDisable(false);
+        }
+
     }
 
     @FXML
