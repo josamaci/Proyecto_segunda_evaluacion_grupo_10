@@ -2,13 +2,15 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="bpPlayboard" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="360.0" styleClass="bpMenu" stylesheets="@../../Styles/windows.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="espol.grupo_09.PlayboardController">
+<BorderPane fx:id="bpPlayboard" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="360.0" styleClass="bpMenu" stylesheets="@../../Styles/windows.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="espol.grupo_09.PlayboardController">
    <top>
       <VBox BorderPane.alignment="CENTER" />
    </top>
@@ -36,9 +38,93 @@
       </VBox>
    </bottom>
    <center>
-      <Pane fx:id="Pane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <FlowPane alignment="CENTER" maxHeight="300.0" maxWidth="300.0" minHeight="300.0" minWidth="300.0" prefHeight="300.0" prefWidth="300.0" rowValignment="TOP" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets top="100.0" />
-         </BorderPane.margin></Pane>
+         </BorderPane.margin>
+         <children>
+            <StackPane fx:id="topLeft" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: BLUE;">
+               <children>
+                  <Label fx:id="topLeftChoice" alignment="CENTER" contentDisplay="CENTER" textAlignment="CENTER">
+                     <font>
+                        <Font size="70.0" />
+                     </font>
+                  </Label>
+               </children>
+            </StackPane>
+            <StackPane fx:id="top" layoutX="110.0" layoutY="110.0" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: BLUE;">
+               <children>
+                  <Label fx:id="topChoice" alignment="CENTER" contentDisplay="CENTER" textAlignment="CENTER">
+                     <font>
+                        <Font size="70.0" />
+                     </font>
+                  </Label>
+               </children>
+            </StackPane>
+            <StackPane fx:id="topRight" layoutX="160.0" layoutY="110.0" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: BLUE;">
+               <children>
+                  <Label fx:id="topRightChoice" alignment="CENTER" contentDisplay="CENTER" textAlignment="CENTER">
+                     <font>
+                        <Font size="70.0" />
+                     </font>
+                  </Label>
+               </children>
+            </StackPane>
+            <StackPane fx:id="centerLeft" layoutX="210.0" layoutY="110.0" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: BLUE;">
+               <children>
+                  <Label fx:id="centerLeftChoice" alignment="CENTER" contentDisplay="CENTER" textAlignment="CENTER">
+                     <font>
+                        <Font size="70.0" />
+                     </font>
+                  </Label>
+               </children>
+            </StackPane>
+            <StackPane fx:id="center" layoutX="110.0" layoutY="160.0" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: BLUE;">
+               <children>
+                  <Label fx:id="centerChoice" alignment="CENTER" contentDisplay="CENTER" textAlignment="CENTER">
+                     <font>
+                        <Font size="70.0" />
+                     </font>
+                  </Label>
+               </children>
+            </StackPane>
+            <StackPane fx:id="centerRight" layoutX="160.0" layoutY="160.0" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: BLUE;">
+               <children>
+                  <Label fx:id="centerRightChoice" alignment="CENTER" contentDisplay="CENTER" textAlignment="CENTER">
+                     <font>
+                        <Font size="70.0" />
+                     </font>
+                  </Label>
+               </children>
+            </StackPane>
+            <StackPane fx:id="bottomLeft" layoutX="210.0" layoutY="160.0" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: BLUE;">
+               <children>
+                  <Label fx:id="bottonLeftChoice" alignment="CENTER" contentDisplay="CENTER" textAlignment="CENTER">
+                     <font>
+                        <Font size="70.0" />
+                     </font>
+                  </Label>
+               </children>
+            </StackPane>
+            <StackPane fx:id="botton" layoutX="110.0" layoutY="210.0" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: BLUE;">
+               <children>
+                  <Label fx:id="bottonChoice" alignment="CENTER" contentDisplay="CENTER" textAlignment="CENTER">
+                     <font>
+                        <Font size="70.0" />
+                     </font>
+                  </Label>
+               </children>
+            </StackPane>
+            <StackPane fx:id="bottomRight" layoutX="160.0" layoutY="210.0" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: BLUE;">
+               <children>
+                  <Label fx:id="bottonRightChoice" alignment="CENTER" contentDisplay="CENTER" textAlignment="CENTER">
+                     <font>
+                        <Font size="70.0" />
+                     </font>
+                  </Label>
+               </children>
+            </StackPane>
+         </children>
+      </FlowPane>
    </center>
 </BorderPane>
