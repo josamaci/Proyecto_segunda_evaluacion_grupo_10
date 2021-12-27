@@ -51,13 +51,15 @@ public class PlayboardController implements Initializable {
     private Label bottomLeftChoice;
     @FXML
     private StackPane bottomRight;
-    private Board b;
+    
     @FXML
     private StackPane bottom;
     @FXML
     private Label bottomChoice;
     @FXML
     private Label bottomRightChoice;
+    
+    private Board b;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
