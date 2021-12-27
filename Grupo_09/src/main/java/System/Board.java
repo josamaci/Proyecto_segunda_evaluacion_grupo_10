@@ -25,7 +25,7 @@ public class Board {
             }
         }
     }
-    
+        
     public Character[][] getBoard() {
         return board;
     }
