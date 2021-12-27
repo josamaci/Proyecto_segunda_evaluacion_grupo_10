@@ -34,12 +34,9 @@ public class Board {
         this.board = board;
     }
     
-    public void insertChar(Coordinate c, Character content){
+    public String insertChar(Coordinate c, Character content){
         board[c.getX()][c.getY()] = content;
-    }
-    
-    public void insertChar(int x, int y, Character content){
-        board[x][y] = content;
+        return winOrLose();
     }
     
     public ArrayList<Coordinate> getCoordinatesOf(Character content){
@@ -67,29 +64,28 @@ public class Board {
         return s; 
     }
     
-    public void winOrLose(Character eval, Character rival){
+    public String winOrLose(){
+        String result = "STILL PLAYING";
         int i = 3;
-        if(winner(eval)){
+        if(winner(Reader.getPlayer())){
             i = 0;
-        }else if(winner(rival)){
+        }else if(winner(Reader.getPC())){
             i = 1;
         }else if (!isNotComplete()){
             i = 2;
         }
         switch(i){
             case 0:
-                System.out.println("YOU WIN");
+                result = "YOU WIN";
                 break;
             case 1:
-                System.out.println("YOU LOSE");
+                result = "YOU LOSE";
                 break;
             case 2:
-                System.out.println("DRAW");
+                result = "DRAW";
                 break;
-            default:
-                System.out.println("STILL PLAYING");
         }
-        
+        return result;
     }
     
     private boolean winner(Character eval){

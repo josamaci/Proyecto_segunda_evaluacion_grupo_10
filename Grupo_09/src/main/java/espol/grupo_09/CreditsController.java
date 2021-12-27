@@ -22,10 +22,15 @@ public class CreditsController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        if(Reader.getGameResult()){
-            lblWinLose.setText("YOU WON");
-        }else{
-            lblWinLose.setText("YOU LOST");
+        switch (Reader.getGameResult()) {
+            case 1:
+                lblWinLose.setText("YOU WON");
+                break;
+            case -1:
+                lblWinLose.setText("YOU LOSE");
+                break;
+            default:
+                lblWinLose.setText("DRAW");
         }
     }
 

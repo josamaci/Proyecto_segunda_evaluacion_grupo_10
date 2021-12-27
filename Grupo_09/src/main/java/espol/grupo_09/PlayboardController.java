@@ -64,77 +64,92 @@ public class PlayboardController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         b = new Board();
+        System.out.println(b);
     }
 
     @FXML
     private void surrender(ActionEvent event) throws IOException {
-        Reader.setGameResult(false);
+        Reader.setGameResult(-1);
         App.setRoot("Credits");
     }
     
-    private void insert(Coordinate c, char ch){
-        b.insertChar(c, ch);
+    private void insert(Coordinate c, char ch) throws IOException{
+        String result = b.insertChar(c, ch);
+        switch (result) {
+            case "YOU WIN":
+                Reader.setGameResult(1);
+                App.setRoot("Credits");
+                break;
+            case "YOU LOSE":
+                Reader.setGameResult(-1);
+                App.setRoot("Credits");
+                break;
+            case "DRAW":
+                Reader.setGameResult(0);
+                App.setRoot("Credits");
+                break;
+        }
     }
 
     @FXML
-    private void topLeftClicked(MouseEvent event) {
+    private void topLeftClicked(MouseEvent event) throws IOException {
         insert(new Coordinate(0,0), Reader.getPlayer());
         topLeft.setDisable(true);
         topLeftChoice.setText(String.valueOf(Reader.getPlayer()));
     }
 
     @FXML
-    private void topClicked(MouseEvent event) {
+    private void topClicked(MouseEvent event) throws IOException {
         insert(new Coordinate(0, 1), Reader.getPlayer());
         top.setDisable(true);
         topChoice.setText(String.valueOf(Reader.getPlayer()));
     }
 
     @FXML
-    private void topRightClicked(MouseEvent event) {
+    private void topRightClicked(MouseEvent event) throws IOException {
         insert(new Coordinate(0, 2), Reader.getPlayer());
         topRight.setDisable(true);
         topRightChoice.setText(String.valueOf(Reader.getPlayer()));
     }
 
     @FXML
-    private void centerLeftClicked(MouseEvent event) {
-        insert(new Coordinate(1, 1), Reader.getPlayer());
+    private void centerLeftClicked(MouseEvent event) throws IOException {
+        insert(new Coordinate(1, 0), Reader.getPlayer());
         centerLeft.setDisable(true);
         centerLeftChoice.setText(String.valueOf(Reader.getPlayer()));
     }
 
     @FXML
-    private void centerClicked(MouseEvent event) {
-        insert(new Coordinate(0, 2), Reader.getPlayer());
+    private void centerClicked(MouseEvent event) throws IOException {
+        insert(new Coordinate(1, 1), Reader.getPlayer());
         center.setDisable(true);
         centerChoice.setText(String.valueOf(Reader.getPlayer()));
     }
 
     @FXML
-    private void centerRightClicked(MouseEvent event) {
-        insert(new Coordinate(0, 2), Reader.getPlayer());
+    private void centerRightClicked(MouseEvent event) throws IOException {
+        insert(new Coordinate(1, 2), Reader.getPlayer());
         centerRight.setDisable(true);
         centerRightChoice.setText(String.valueOf(Reader.getPlayer()));
     }
 
     @FXML
-    private void bottomLeftClicked(MouseEvent event) {
-        insert(new Coordinate(0, 2), Reader.getPlayer());
+    private void bottomLeftClicked(MouseEvent event) throws IOException {
+        insert(new Coordinate(2, 0), Reader.getPlayer());
         bottomLeft.setDisable(true);
         bottomLeftChoice.setText(String.valueOf(Reader.getPlayer()));
     }
 
     @FXML
-    private void bottomClicked(MouseEvent event) {
-        insert(new Coordinate(0, 2), Reader.getPlayer());
+    private void bottomClicked(MouseEvent event) throws IOException {
+        insert(new Coordinate(2, 1), Reader.getPlayer());
         bottom.setDisable(true);
         bottomChoice.setText(String.valueOf(Reader.getPlayer()));
     }
 
     @FXML
-    private void bottomRightClicked(MouseEvent event) {
-        insert(new Coordinate(0, 2), Reader.getPlayer());
+    private void bottomRightClicked(MouseEvent event) throws IOException {
+        insert(new Coordinate(2, 2), Reader.getPlayer());
         bottomRight.setDisable(true);
         bottomRightChoice.setText(String.valueOf(Reader.getPlayer()));
     }

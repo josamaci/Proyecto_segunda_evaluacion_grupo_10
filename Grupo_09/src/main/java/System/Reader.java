@@ -5,13 +5,13 @@ public class Reader {
     private static char player = '0';
     private static char pc = 'x';
     private static boolean starting = false;
-    private static boolean gameResult = false;
+    private static int gameResult = 2;
 
-    public static boolean getGameResult() {
+    public static int getGameResult() {
         return gameResult;
     }
 
-    public static void setGameResult(boolean gameResult) {
+    public static void setGameResult(int gameResult) {
         Reader.gameResult = gameResult;
     }
     
