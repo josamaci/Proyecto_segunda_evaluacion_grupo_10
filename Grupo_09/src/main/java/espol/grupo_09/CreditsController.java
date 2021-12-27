@@ -1,5 +1,6 @@
 package espol.grupo_09;
 
+import System.Reader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,7 +22,11 @@ public class CreditsController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        if(Reader.getGameResult()){
+            lblWinLose.setText("YOU WON");
+        }else{
+            lblWinLose.setText("YOU LOST");
+        }
     }
 
     @FXML
