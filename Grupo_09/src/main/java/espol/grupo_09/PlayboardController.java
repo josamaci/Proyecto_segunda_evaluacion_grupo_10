@@ -61,7 +61,7 @@ public class PlayboardController implements Initializable {
 
     @FXML
     private void surrender(ActionEvent event) throws IOException {
-//        Reader.setGameResult(false); Está dando error
+        Reader.setGameResult(false);
         App.setRoot("Credits");
     }
 

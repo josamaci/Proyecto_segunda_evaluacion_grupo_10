@@ -1,6 +1,7 @@
 package System;
 
-import java.util.ArrayList;
+import TDAs.Tree;
+import java.util.LinkedList;
 
 public class EjercicioF {
 
@@ -13,12 +14,6 @@ public class EjercicioF {
         System.out.println(b.getCoordinatesOf('0'));
         System.out.println(b);
         b.winOrLose('x','0');
-        
-        /*ArrayList<Board> boards = b.generateAlternatives('x');
-        for(Board boa:boards){
-            System.out.print(boa);
-            System.out.println(boa.boardUtility('x', '0'));
-        }*/
         System.out.print(b.generateMinimax('x', 'c'));
         System.out.print(b.minimax('x', 'c'));
     }

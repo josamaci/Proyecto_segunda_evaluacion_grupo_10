@@ -2,10 +2,10 @@
 package System;
 
 public class Reader {
-    private static char you;
-    private static char rival;
-    private static boolean starting;
-    private static boolean gameResult;
+    private static char you = '0';
+    private static char rival = 'x';
+    private static boolean starting = false;
+    private static boolean gameResult = false;
 
     public static boolean getGameResult() {
         return gameResult;

@@ -22,12 +22,11 @@ public class CreditsController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // Está dando error
-//        if(Reader.getGameResult()){
-//            lblWinLose.setText("YOU WON");
-//        }else{
-//            lblWinLose.setText("YOU LOST");
-//        }
+        if(Reader.getGameResult()){
+            lblWinLose.setText("YOU WON");
+        }else{
+            lblWinLose.setText("YOU LOST");
+        }
     }
 
     @FXML
