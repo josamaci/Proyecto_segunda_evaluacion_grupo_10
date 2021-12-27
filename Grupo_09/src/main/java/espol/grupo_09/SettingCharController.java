@@ -1,5 +1,6 @@
 package espol.grupo_09;
 
+import System.Reader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -33,10 +34,14 @@ public class SettingCharController implements Initializable {
 
     @FXML
     private void charX(ActionEvent event) {
+        Reader.setYou(btX.getText().charAt(0));
+        Reader.setRival(bt0.getText().charAt(0));
     }
 
     @FXML
     private void char0(ActionEvent event) {
+        Reader.setYou(bt0.getText().charAt(0));
+        Reader.setRival(btX.getText().charAt(0));
     }
 
     @FXML

@@ -1,5 +1,6 @@
 package espol.grupo_09;
 
+import System.Reader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -35,10 +36,14 @@ public class SettingFirstController implements Initializable {
 
     @FXML
     private void selectYou(ActionEvent event) {
+        Reader.setStarting(true);
     }
+    
+    
 
     @FXML
     private void selectPC(ActionEvent event) {
+        Reader.setStarting(false);
     }
 
     @FXML
