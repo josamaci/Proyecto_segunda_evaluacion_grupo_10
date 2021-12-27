@@ -37,4 +37,8 @@ public class Tree<T> {
         return this.root.getChildren().get(index);
     }
     
+    public String toString(){
+        return this.getRoot().getContent().toString();
+    }
+    
 }

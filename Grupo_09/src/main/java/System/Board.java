@@ -1,7 +1,10 @@
 package System;
 
+import TDAs.NodeTree;
+import TDAs.Tree;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 
 public class Board {
@@ -171,12 +174,13 @@ public class Board {
     return false;
     }
     
-    private ArrayList<Board> generateAlternatives(Character eval){
-        ArrayList<Board> b = new ArrayList<>();
+    private LinkedList<Tree<Board>> generateAlternatives(Character eval){
+        LinkedList<Tree<Board>> b = new LinkedList<>();
             for(Coordinate c:getCoordinatesOf(' ')){
                 Board bi = new Board(this.board);
                 bi.insertChar(c, eval);
-                b.add(bi);
+                Tree<Board> t = new Tree<>(new NodeTree<>(bi));
+                b.add(t);
             }
         return b;
     }
@@ -199,18 +203,18 @@ public class Board {
         return waysToWin(you) - waysToWin(rival);
     }
     
-    public Map<Board, Integer> generateMinimax(Character you, Character rival){
+    public Map<Tree<Board>, Integer> generateMinimax(Character you, Character rival){
         int i = -100;
-        ArrayList<Board> alternativesYou = this.generateAlternatives(you);
-        Map<Board, Integer> mapYou = new HashMap<>();
-        for(Board boa: alternativesYou){
+        LinkedList<Tree<Board>> alternativesYou = this.generateAlternatives(you);
+        Map<Tree<Board>, Integer> mapYou = new HashMap<>();
+        for(Tree<Board> boa: alternativesYou){
             int j = 0;
-            ArrayList<Board> alternativesRival = boa.generateAlternatives(rival);
-            j = alternativesRival.get(0).boardUtility(you, rival);
-            for(Board board: alternativesRival){
+            LinkedList<Tree<Board>> alternativesRival = boa.getRoot().getContent().generateAlternatives(rival);
+            j = alternativesRival.get(0).getRoot().getContent().boardUtility(you, rival);
+            for(Tree<Board> board: alternativesRival){
                 mapYou.put(boa, j);
-                if(board.boardUtility(you, rival)<j){
-                    j = board.boardUtility(you, rival);
+                if(board.getRoot().getContent().boardUtility(you, rival)<j){
+                    j = board.getRoot().getContent().boardUtility(you, rival);
                     mapYou.replace(boa,j);
                 }
             }
@@ -219,7 +223,7 @@ public class Board {
     }
     
     public Board minimax(Character you, Character rival){
-        Map<Board, Integer> mapYou = this.generateMinimax(you, rival);
+        Map<Tree<Board>, Integer> mapYou = this.generateMinimax(you, rival);
         int content = -10;
         Board b = null;
         for(int i: mapYou.values()){
@@ -227,9 +231,9 @@ public class Board {
                 content = i;
             }
         }
-        for(Board boa: mapYou.keySet()){
+        for(Tree<Board> boa: mapYou.keySet()){
             if(mapYou.get(boa).equals(content)){
-                b = new Board(boa.getBoard());
+                b = new Board(boa.getRoot().getContent().getBoard());
             }
         }
         return b;
