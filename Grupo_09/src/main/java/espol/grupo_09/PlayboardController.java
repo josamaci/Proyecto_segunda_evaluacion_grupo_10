@@ -48,16 +48,16 @@ public class PlayboardController implements Initializable {
     @FXML
     private StackPane bottomLeft;
     @FXML
-    private Label bottonLeftChoice;
-    @FXML
-    private StackPane botton;
-    @FXML
-    private Label bottonChoice;
+    private Label bottomLeftChoice;
     @FXML
     private StackPane bottomRight;
-    @FXML
-    private Label bottonRightChoice;
     private Board b;
+    @FXML
+    private StackPane bottom;
+    @FXML
+    private Label bottomChoice;
+    @FXML
+    private Label bottomRightChoice;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -75,10 +75,66 @@ public class PlayboardController implements Initializable {
     }
 
     @FXML
-    private void Pane00(MouseEvent event) {
+    private void topLeftClicked(MouseEvent event) {
         insert(new Coordinate(0,0), Reader.getPlayer());
         topLeft.setDisable(true);
         topLeftChoice.setText(String.valueOf(Reader.getPlayer()));
+    }
+
+    @FXML
+    private void topClicked(MouseEvent event) {
+        insert(new Coordinate(0, 1), Reader.getPlayer());
+        top.setDisable(true);
+        topChoice.setText(String.valueOf(Reader.getPlayer()));
+    }
+
+    @FXML
+    private void topRightClicked(MouseEvent event) {
+        insert(new Coordinate(0, 2), Reader.getPlayer());
+        topRight.setDisable(true);
+        topRightChoice.setText(String.valueOf(Reader.getPlayer()));
+    }
+
+    @FXML
+    private void centerLeftClicked(MouseEvent event) {
+        insert(new Coordinate(1, 1), Reader.getPlayer());
+        centerLeft.setDisable(true);
+        centerLeftChoice.setText(String.valueOf(Reader.getPlayer()));
+    }
+
+    @FXML
+    private void centerClicked(MouseEvent event) {
+        insert(new Coordinate(0, 2), Reader.getPlayer());
+        center.setDisable(true);
+        centerChoice.setText(String.valueOf(Reader.getPlayer()));
+    }
+
+    @FXML
+    private void centerRightClicked(MouseEvent event) {
+        insert(new Coordinate(0, 2), Reader.getPlayer());
+        centerRight.setDisable(true);
+        centerRightChoice.setText(String.valueOf(Reader.getPlayer()));
+    }
+
+    @FXML
+    private void bottomLeftClicked(MouseEvent event) {
+        insert(new Coordinate(0, 2), Reader.getPlayer());
+        bottomLeft.setDisable(true);
+        bottomLeftChoice.setText(String.valueOf(Reader.getPlayer()));
+    }
+
+    @FXML
+    private void bottomClicked(MouseEvent event) {
+        insert(new Coordinate(0, 2), Reader.getPlayer());
+        bottom.setDisable(true);
+        bottomChoice.setText(String.valueOf(Reader.getPlayer()));
+    }
+
+    @FXML
+    private void bottomRightClicked(MouseEvent event) {
+        insert(new Coordinate(0, 2), Reader.getPlayer());
+        bottomRight.setDisable(true);
+        bottomRightChoice.setText(String.valueOf(Reader.getPlayer()));
     }
 
 }
