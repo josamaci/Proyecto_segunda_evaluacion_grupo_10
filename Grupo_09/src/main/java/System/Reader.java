@@ -2,8 +2,8 @@
 package System;
 
 public class Reader {
-    private static char you = '0';
-    private static char rival = 'x';
+    private static char player = '0';
+    private static char pc = 'x';
     private static boolean starting = false;
     private static boolean gameResult = false;
 
@@ -15,20 +15,20 @@ public class Reader {
         Reader.gameResult = gameResult;
     }
     
-    public static char getYou() {
-        return you;
+    public static char getPlayer() {
+        return player;
     }
 
-    public static void setYou(char you) {
-        Reader.you = you;
+    public static void setPlayer(char player) {
+        Reader.player = player;
     }
 
-    public static char getRival() {
-        return rival;
+    public static char getPC() {
+        return pc;
     }
 
-    public static void setRival(char rival) {
-        Reader.rival = rival;
+    public static void setPC(char pc) {
+        Reader.pc = pc;
     }
 
     public static boolean getStarting() {

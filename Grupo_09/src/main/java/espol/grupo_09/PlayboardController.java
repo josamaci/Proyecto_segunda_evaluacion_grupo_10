@@ -1,5 +1,7 @@
 package espol.grupo_09;
 
+import System.Board;
+import System.Coordinate;
 import System.Reader;
 import java.io.IOException;
 import java.net.URL;
@@ -9,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 
@@ -54,15 +57,28 @@ public class PlayboardController implements Initializable {
     private StackPane bottomRight;
     @FXML
     private Label bottonRightChoice;
-
+    private Board b;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        b = new Board();
     }
 
     @FXML
     private void surrender(ActionEvent event) throws IOException {
         Reader.setGameResult(false);
         App.setRoot("Credits");
+    }
+    
+    private void insert(Coordinate c, char ch){
+        b.insertChar(c, ch);
+    }
+
+    @FXML
+    private void Pane00(MouseEvent event) {
+        insert(new Coordinate(0,0), Reader.getPlayer());
+        topLeft.setDisable(true);
+        topLeftChoice.setText(String.valueOf(Reader.getPlayer()));
     }
 
 }

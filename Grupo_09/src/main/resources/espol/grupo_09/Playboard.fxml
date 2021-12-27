@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="bpPlayboard" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="360.0" styleClass="bpMenu" stylesheets="@../../Styles/windows.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="espol.grupo_09.PlayboardController">
+<BorderPane fx:id="bpPlayboard" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="360.0" styleClass="bpMenu" stylesheets="@../../Styles/windows.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="espol.grupo_09.PlayboardController">
    <top>
       <VBox BorderPane.alignment="CENTER" />
    </top>
@@ -43,7 +43,7 @@
             <Insets top="100.0" />
          </BorderPane.margin>
          <children>
-            <StackPane fx:id="topLeft" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: BLUE;">
+            <StackPane fx:id="topLeft" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" onMouseClicked="#Pane00" prefHeight="100.0" prefWidth="100.0" style="-fx-border-color: BLUE;">
                <children>
                   <Label fx:id="topLeftChoice" alignment="CENTER" contentDisplay="CENTER" textAlignment="CENTER">
                      <font>
