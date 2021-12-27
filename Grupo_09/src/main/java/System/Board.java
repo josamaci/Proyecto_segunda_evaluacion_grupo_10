@@ -174,7 +174,7 @@ public class Board {
     return false;
     }
     
-    private LinkedList<Tree<Board>> generateAlternatives(Character eval){
+    public LinkedList<Tree<Board>> generateAlternatives(Character eval){
         LinkedList<Tree<Board>> b = new LinkedList<>();
             for(Coordinate c:getCoordinatesOf(' ')){
                 Board bi = new Board(this.board);

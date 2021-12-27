@@ -1,5 +1,6 @@
 package espol.grupo_09;
 
+import System.Reader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -25,6 +26,7 @@ public class PlayboardController implements Initializable {
 
     @FXML
     private void surrender(ActionEvent event) throws IOException {
+        Reader.setGameResult(false);
         App.setRoot("Credits");
     }
 
