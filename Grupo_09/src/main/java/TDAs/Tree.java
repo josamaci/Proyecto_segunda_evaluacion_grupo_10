@@ -37,6 +37,7 @@ public class Tree<T> {
         return this.root.getChildren().get(index);
     }
     
+    @Override
     public String toString(){
         return this.getRoot().getContent().toString();
     }
