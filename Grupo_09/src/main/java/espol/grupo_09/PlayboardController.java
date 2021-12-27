@@ -5,6 +5,8 @@ import System.Coordinate;
 import System.Reader;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -64,7 +66,13 @@ public class PlayboardController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         b = new Board();
-        System.out.println(b);
+        if(!Reader.getStarting()){
+            try {
+                pcInsert(generateCoord());
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
     }
 
     @FXML
@@ -75,6 +83,47 @@ public class PlayboardController implements Initializable {
     
     private void insert(Coordinate c, char ch) throws IOException{
         String result = b.insertChar(c, ch);
+        resultEvaluation(result);
+        pcInsert(b.minimaxCoord());
+    }
+        
+    private void pcInsert(Coordinate c) throws IOException {
+        String result = b.insertChar(c,Reader.getPC());
+        disablePanel(c);
+        resultEvaluation(result);
+    }
+    
+    private void disablePanel(Coordinate c){
+        if(c.equals(new Coordinate(0,0))){
+        topLeft.setDisable(true);
+        topLeftChoice.setText(String.valueOf(Reader.getPC()));}
+        if(c.equals(new Coordinate(0,1))){
+        top.setDisable(true);
+        topChoice.setText(String.valueOf(Reader.getPC()));}
+        if(c.equals(new Coordinate(0,2))){
+        topRight.setDisable(true);
+        topRightChoice.setText(String.valueOf(Reader.getPC()));}
+        if(c.equals(new Coordinate(1,0))){
+        centerLeft.setDisable(true);
+        centerLeftChoice.setText(String.valueOf(Reader.getPC()));}
+        if(c.equals(new Coordinate(1,1))){
+        center.setDisable(true);
+        centerChoice.setText(String.valueOf(Reader.getPC()));}
+        if(c.equals(new Coordinate(1,2))){
+        centerRight.setDisable(true);
+        centerRightChoice.setText(String.valueOf(Reader.getPC()));}
+        if(c.equals(new Coordinate(2,0))){
+        bottomLeft.setDisable(true);
+        bottomLeftChoice.setText(String.valueOf(Reader.getPC()));}
+        if(c.equals(new Coordinate(2,1))){
+        bottom.setDisable(true);
+        bottomChoice.setText(String.valueOf(Reader.getPC()));}
+        if(c.equals(new Coordinate(2,2))){
+        bottomRight.setDisable(true);
+        bottomRightChoice.setText(String.valueOf(Reader.getPC()));}
+    }
+    
+    private void resultEvaluation(String result) throws IOException{
         switch (result) {
             case "YOU WIN":
                 Reader.setGameResult(1);
@@ -90,7 +139,7 @@ public class PlayboardController implements Initializable {
                 break;
         }
     }
-
+    
     @FXML
     private void topLeftClicked(MouseEvent event) throws IOException {
         insert(new Coordinate(0,0), Reader.getPlayer());
@@ -153,5 +202,33 @@ public class PlayboardController implements Initializable {
         bottomRight.setDisable(true);
         bottomRightChoice.setText(String.valueOf(Reader.getPlayer()));
     }
+
+    private Coordinate generateCoord() {
+        Coordinate c = null;
+        Random r = new Random();
+        switch(r.nextInt(9)){
+            case 0: c = new Coordinate(0, 0);
+                break;  
+            case 1: c = new Coordinate(0, 1);
+                break; 
+            case 2: c = new Coordinate(0, 2);
+                break; 
+            case 3: c = new Coordinate(1, 0);
+                break; 
+            case 4: c = new Coordinate(1, 1);
+                break; 
+            case 5: c = new Coordinate(1, 2);
+                break; 
+            case 6: c = new Coordinate(2, 0);
+                break; 
+            case 7: c = new Coordinate(2, 1);
+                break;  
+            case 8: c = new Coordinate(2, 2);
+                break; 
+        }
+        return c;
+    }
+
+    
 
 }

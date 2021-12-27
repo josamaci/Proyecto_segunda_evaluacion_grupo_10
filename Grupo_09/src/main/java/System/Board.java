@@ -234,4 +234,17 @@ public class Board {
         }
         return b;
     }
+    
+    //This is only for PC
+    public Coordinate minimaxCoord(){
+        Coordinate coords = null;
+        ArrayList<Coordinate> newCoords = this.minimax(Reader.getPC(), Reader.getPlayer()).getCoordinatesOf(Reader.getPC());
+        ArrayList<Coordinate> oldCoords = this.getCoordinatesOf(Reader.getPC());
+        for(Coordinate c: newCoords){
+            if(!oldCoords.contains(c)){
+                coords = c;
+            }
+        }
+        return coords;
+    }
 }
