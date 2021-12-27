@@ -160,7 +160,7 @@ public class Board {
         return contains(' ');
     }
     
-    public boolean contains(Character c){
+    private boolean contains(Character c){
         for(int i=0; i<3; i++){
             for(int j=0; j<3; j++){
                 if(board[i][j].equals(c)){
@@ -171,7 +171,7 @@ public class Board {
     return false;
     }
     
-    public ArrayList<Board> generateAlternatives(Character eval){
+    private ArrayList<Board> generateAlternatives(Character eval){
         ArrayList<Board> b = new ArrayList<>();
             for(Coordinate c:getCoordinatesOf(' ')){
                 Board bi = new Board(this.board);
@@ -181,7 +181,7 @@ public class Board {
         return b;
     }
     
-    public int waysToWin(Character c){
+    private int waysToWin(Character c){
         int i = 0;
         ArrayList<Coordinate> coords = this.getCoordinatesOf(c);
         ArrayList<Coordinate> coordsV = this.getCoordinatesOf(' ');
@@ -195,7 +195,7 @@ public class Board {
     return i;
     }
     
-    public int boardUtility(Character you, Character rival){
+    private int boardUtility(Character you, Character rival){
         return waysToWin(you) - waysToWin(rival);
     }
     
@@ -222,18 +222,15 @@ public class Board {
         Map<Board, Integer> mapYou = this.generateMinimax(you, rival);
         int content = -10;
         Board b = null;
-        int cont = 0;
         for(int i: mapYou.values()){
             if(i>content){
-                int cont2=0;
-                for(Board boa: mapYou.keySet()){
-                    if(cont == cont2){
-                        b = new Board(boa.getBoard());
-                        return b;
-                    }
-                }
+                content = i;
             }
-            cont++;
+        }
+        for(Board boa: mapYou.keySet()){
+            if(mapYou.get(boa).equals(content)){
+                b = new Board(boa.getBoard());
+            }
         }
         return b;
     }
