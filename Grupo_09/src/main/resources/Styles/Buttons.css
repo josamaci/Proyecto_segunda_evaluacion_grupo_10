@@ -64,7 +64,6 @@
 
 .optionButton:selected{
     -fx-background-color: #0099ff;
-    -fx-text-fill: WHITE;
     -fx-translate-y: 5;
     -fx-effect: dropshadow(one-pass-box, darkcyan, 0.0, 0.0, 0.0, 5);
 }

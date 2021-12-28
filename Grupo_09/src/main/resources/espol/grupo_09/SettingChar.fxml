@@ -11,9 +11,9 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="pSettings" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="361.0" styleClass="bpMenu" stylesheets="@../../Styles/windows.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="espol.grupo_09.SettingCharController">
+<Pane fx:id="pSettings" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="361.0" styleClass="bpMenu" stylesheets="@../../Styles/Window.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="espol.grupo_09.SettingCharController">
    <children>
-      <VBox alignment="CENTER" prefHeight="640.0" prefWidth="361.0" stylesheets="@../../Styles/windows.css">
+      <VBox alignment="CENTER" prefHeight="640.0" prefWidth="361.0">
          <children>
             <HBox prefHeight="82.0" prefWidth="362.0">
                <children>
