@@ -2,12 +2,4 @@
     Created on : 28 dic. 2021, 15:02:50
     Author     : kevin
 */
-.flowPane{
-    -fx-border-color: blue;
-}
-.hoverPane:hover{
-    -fx-background-color: #4CAF50;
-    -fx-border-color: #3e8e41;
-    -fx-border-width: 50;
-    -fx-cursor: hand;
-}
+
