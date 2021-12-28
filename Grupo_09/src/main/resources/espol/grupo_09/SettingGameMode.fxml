@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="pSettings" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="361.0" styleClass="bpMenu" stylesheets="@../../Styles/windows.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="espol.grupo_09.SettingCharController">
+<Pane fx:id="pSettings" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="361.0" styleClass="bpMenu" stylesheets="@../../Styles/windows.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="espol.grupo_09.SettingGameModeController">
    <children>
       <VBox alignment="CENTER" prefHeight="640.0" prefWidth="361.0" stylesheets="@../../Styles/windows.css">
          <children>
@@ -19,7 +19,7 @@
                <children>
                   <HBox alignment="TOP_CENTER" prefHeight="86.0" prefWidth="67.0">
                      <children>
-                        <Button fx:id="btBackToGameMode" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#switchToGameMode" prefHeight="62.0" prefWidth="75.0" styleClass="backButton" stylesheets="@../../Styles/buttons.css" text="←" textFill="WHITE">
+                        <Button fx:id="btBackToMainMenu" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#switchToMainMenu" prefHeight="62.0" prefWidth="75.0" styleClass="backButton" stylesheets="@../../Styles/buttons.css" text="←" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="21.0" />
                            </font>
@@ -32,12 +32,12 @@
                         <Insets top="10.0" />
                      </opaqueInsets>
                   </HBox>
-                  <Circle fill="WHITE" opacity="0.5" radius="5.0" stroke="TRANSPARENT" strokeType="INSIDE">
+                  <Circle disable="true" fill="WHITE" radius="5.0" stroke="TRANSPARENT" strokeType="INSIDE">
                      <HBox.margin>
                         <Insets left="65.0" right="20.0" top="40.0" />
                      </HBox.margin>
                   </Circle>
-                  <Circle disable="true" fill="WHITE" radius="5.0" stroke="TRANSPARENT" strokeType="INSIDE">
+                  <Circle fill="WHITE" opacity="0.5" radius="5.0" stroke="TRANSPARENT" strokeType="INSIDE">
                      <HBox.margin>
                         <Insets left="20.0" right="20.0" top="40.0" />
                      </HBox.margin>
@@ -59,7 +59,7 @@
             </Label>
             <HBox alignment="CENTER" prefHeight="124.0" prefWidth="362.0">
                <children>
-                  <ToggleButton fx:id="btX" contentDisplay="CENTER" mnemonicParsing="false" onAction="#charX" prefHeight="100.0" prefWidth="200.0" styleClass="optionButton" stylesheets="@../../Styles/buttons.css" text="X" textFill="WHITE">
+                  <ToggleButton fx:id="btPVP" contentDisplay="CENTER" mnemonicParsing="false" onAction="#PVP" prefHeight="100.0" prefWidth="200.0" styleClass="optionButton" stylesheets="@../../Styles/buttons.css" text="PVP" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="32.0" />
                      </font>
@@ -67,7 +67,7 @@
                         <Insets />
                      </HBox.margin>
                      <toggleGroup>
-                        <ToggleGroup fx:id="btGroupChar" />
+                        <ToggleGroup fx:id="btGroupGameMode" />
                      </toggleGroup>
                   </ToggleButton>
                </children>
@@ -80,7 +80,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="124.0" prefWidth="362.0">
                <children>
-                  <ToggleButton fx:id="btO" contentDisplay="CENTER" mnemonicParsing="false" onAction="#charO" prefHeight="100.0" prefWidth="200.0" styleClass="optionButton" stylesheets="@../../Styles/buttons.css" text="O" textAlignment="CENTER" textFill="WHITE" toggleGroup="$btGroupChar">
+                  <ToggleButton fx:id="btPVE" contentDisplay="CENTER" mnemonicParsing="false" onAction="#PVE" prefHeight="100.0" prefWidth="200.0" styleClass="optionButton" stylesheets="@../../Styles/buttons.css" text="PVE" textAlignment="CENTER" textFill="WHITE" toggleGroup="$btGroupGameMode">
                      <font>
                         <Font name="System Bold" size="32.0" />
                      </font>
@@ -96,9 +96,24 @@
                   <Insets bottom="10.0" />
                </VBox.margin>
             </HBox>
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="306.0" prefHeight="124.0" prefWidth="362.0">
+               <children>
+                  <ToggleButton fx:id="btPCvsPC" contentDisplay="CENTER" mnemonicParsing="false" onAction="#PCvsPC" prefHeight="100.0" prefWidth="200.0" styleClass="optionButton" stylesheets="@../../Styles/buttons.css" text="PC vs PC" textAlignment="CENTER" textFill="WHITE" toggleGroup="$btGroupGameMode">
+                     <font>
+                        <Font name="System Bold" size="32.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </ToggleButton>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="362.0">
                <children>
-                  <Button fx:id="btSettingFirst" alignment="CENTER" mnemonicParsing="false" onAction="#switchToFirst" prefHeight="50.0" prefWidth="290.0" styleClass="changeButton" stylesheets="@../../Styles/buttons.css" text="Ok, now what?" textFill="WHITE">
+                  <Button fx:id="btSettingChar" alignment="CENTER" mnemonicParsing="false" onAction="#switchToChar" prefHeight="50.0" prefWidth="290.0" styleClass="changeButton" stylesheets="@../../Styles/buttons.css" text="Ok, what's next?" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="24.0" />
                      </font>
@@ -108,7 +123,7 @@
                   <Insets />
                </opaqueInsets>
                <VBox.margin>
-                  <Insets top="110.0" />
+                  <Insets top="50.0" />
                </VBox.margin>
             </HBox>
          </children>

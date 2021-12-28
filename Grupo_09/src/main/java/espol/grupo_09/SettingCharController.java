@@ -18,15 +18,15 @@ public class SettingCharController implements Initializable {
     @FXML
     private Pane pSettings;
     @FXML
-    private Button btBackToMainMenu;
-    @FXML
     private ToggleButton btX;
     @FXML
-    private ToggleButton bt0;
+    private ToggleButton btO;
     @FXML
     private Button btSettingFirst;
     @FXML
     private ToggleGroup btGroupChar;
+    @FXML
+    private Button btBackToGameMode;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -39,18 +39,18 @@ public class SettingCharController implements Initializable {
             btSettingFirst.setDisable(true);
         } else {
             Reader.setPlayer(btX.getText().charAt(0));
-            Reader.setPc(bt0.getText().charAt(0));
+            Reader.setPc(btO.getText().charAt(0));
             btSettingFirst.setDisable(false);
         }
 
     }
 
     @FXML
-    private void char0(ActionEvent event) {
-        if (!bt0.isSelected()) {
+    private void charO(ActionEvent event) {
+        if (!btO.isSelected()) {
             btSettingFirst.setDisable(true);
         } else {
-            Reader.setPlayer(bt0.getText().charAt(0));
+            Reader.setPlayer(btO.getText().charAt(0));
             Reader.setPc(btX.getText().charAt(0));
             btSettingFirst.setDisable(false);
         }
@@ -62,8 +62,9 @@ public class SettingCharController implements Initializable {
     }
 
     @FXML
-    private void switchToMainMenu(ActionEvent event) throws IOException {
-        App.setRoot("MainMenu");
+    private void switchToGameMode(ActionEvent event) throws IOException {
+        App.setRoot("SettingGameMode");
     }
+
 
 }

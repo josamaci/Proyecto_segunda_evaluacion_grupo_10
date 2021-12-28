@@ -23,8 +23,8 @@ public class MainMenuController implements Initializable {
     }
 
     @FXML
-    private void switchToChar(ActionEvent event) throws IOException {
-        App.setRoot("SettingChar");
+    private void switchToGameMode(ActionEvent event) throws IOException {
+        App.setRoot("SettingGameMode");
     }
 
 }
