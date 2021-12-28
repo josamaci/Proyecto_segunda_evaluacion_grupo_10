@@ -23,45 +23,25 @@ public class PlayboardController implements Initializable {
     private BorderPane bpPlayboard;
     @FXML
     private Button btSurrender;
-    @FXML
-    private StackPane topLeft;
-    @FXML
-    private Label topLeftChoice;
-    @FXML
-    private StackPane top;
-    @FXML
-    private Label topChoice;
-    @FXML
-    private StackPane topRight;
-    @FXML
-    private Label topRightChoice;
-    @FXML
-    private StackPane centerLeft;
-    @FXML
-    private Label centerLeftChoice;
-    @FXML
-    private StackPane center;
-    @FXML
-    private Label centerChoice;
-    @FXML
-    private StackPane centerRight;
-    @FXML
-    private Label centerRightChoice;
-    @FXML
-    private StackPane bottomLeft;
-    @FXML
-    private Label bottomLeftChoice;
-    @FXML
-    private StackPane bottomRight;
-    
-    @FXML
-    private StackPane bottom;
-    @FXML
-    private Label bottomChoice;
-    @FXML
-    private Label bottomRightChoice;
-    
     private Board b;
+    @FXML
+    private Label lblTopLeft;
+    @FXML
+    private Label lblTopRight;
+    @FXML
+    private Label lblLeft;
+    @FXML
+    private Label lblCenter;
+    @FXML
+    private Label lblRight;
+    @FXML
+    private Label lblBottomLeft;
+    @FXML
+    private Label lblBottom;
+    @FXML
+    private Label lblBottomRight;
+    @FXML
+    private Label lblTop;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -74,13 +54,7 @@ public class PlayboardController implements Initializable {
             }
         }
     }
-
-    @FXML
-    private void surrender(ActionEvent event) throws IOException {
-        Reader.setGameResult(-1);
-        App.setRoot("Credits");
-    }
-    
+   
     private void insert(Coordinate c, char ch) throws IOException{
         String result = b.insertChar(c, ch);
         resultEvaluation(result);
@@ -95,32 +69,32 @@ public class PlayboardController implements Initializable {
     
     private void disablePanel(Coordinate c){
         if(c.equals(new Coordinate(0,0))){
-        topLeft.setDisable(true);
-        topLeftChoice.setText(String.valueOf(Reader.getPc()));}
+        lblTopLeft.setDisable(true);
+        lblTopLeft.setText(String.valueOf(Reader.getPc()));}
         if(c.equals(new Coordinate(0,1))){
-        top.setDisable(true);
-        topChoice.setText(String.valueOf(Reader.getPc()));}
+        lblTop.setDisable(true);
+        lblTop.setText(String.valueOf(Reader.getPc()));}
         if(c.equals(new Coordinate(0,2))){
-        topRight.setDisable(true);
-        topRightChoice.setText(String.valueOf(Reader.getPc()));}
+        lblTopRight.setDisable(true);
+        lblTopRight.setText(String.valueOf(Reader.getPc()));}
         if(c.equals(new Coordinate(1,0))){
-        centerLeft.setDisable(true);
-        centerLeftChoice.setText(String.valueOf(Reader.getPc()));}
+        lblLeft.setDisable(true);
+        lblLeft.setText(String.valueOf(Reader.getPc()));}
         if(c.equals(new Coordinate(1,1))){
-        center.setDisable(true);
-        centerChoice.setText(String.valueOf(Reader.getPc()));}
+        lblCenter.setDisable(true);
+        lblCenter.setText(String.valueOf(Reader.getPc()));}
         if(c.equals(new Coordinate(1,2))){
-        centerRight.setDisable(true);
-        centerRightChoice.setText(String.valueOf(Reader.getPc()));}
+        lblRight.setDisable(true);
+        lblRight.setText(String.valueOf(Reader.getPc()));}
         if(c.equals(new Coordinate(2,0))){
-        bottomLeft.setDisable(true);
-        bottomLeftChoice.setText(String.valueOf(Reader.getPc()));}
+        lblBottomLeft.setDisable(true);
+        lblBottomLeft.setText(String.valueOf(Reader.getPc()));}
         if(c.equals(new Coordinate(2,1))){
-        bottom.setDisable(true);
-        bottomChoice.setText(String.valueOf(Reader.getPc()));}
+        lblBottom.setDisable(true);
+        lblBottom.setText(String.valueOf(Reader.getPc()));}
         if(c.equals(new Coordinate(2,2))){
-        bottomRight.setDisable(true);
-        bottomRightChoice.setText(String.valueOf(Reader.getPc()));}
+        lblBottomRight.setDisable(true);
+        lblBottomRight.setText(String.valueOf(Reader.getPc()));}
     }
     
     private void resultEvaluation(String result) throws IOException{
@@ -143,64 +117,64 @@ public class PlayboardController implements Initializable {
     @FXML
     private void topLeftClicked(MouseEvent event) throws IOException {
         insert(new Coordinate(0,0), Reader.getPlayer());
-        topLeft.setDisable(true);
-        topLeftChoice.setText(String.valueOf(Reader.getPlayer()));
+        lblTopLeft.setDisable(true);
+        lblTopLeft.setText(String.valueOf(Reader.getPlayer()));
     }
 
     @FXML
     private void topClicked(MouseEvent event) throws IOException {
         insert(new Coordinate(0, 1), Reader.getPlayer());
-        top.setDisable(true);
-        topChoice.setText(String.valueOf(Reader.getPlayer()));
+        lblTop.setDisable(true);
+        lblTop.setText(String.valueOf(Reader.getPlayer()));
     }
 
     @FXML
     private void topRightClicked(MouseEvent event) throws IOException {
         insert(new Coordinate(0, 2), Reader.getPlayer());
-        topRight.setDisable(true);
-        topRightChoice.setText(String.valueOf(Reader.getPlayer()));
+        lblTopRight.setDisable(true);
+        lblTopRight.setText(String.valueOf(Reader.getPlayer()));
     }
 
     @FXML
-    private void centerLeftClicked(MouseEvent event) throws IOException {
+    private void leftClicked(MouseEvent event) throws IOException {
         insert(new Coordinate(1, 0), Reader.getPlayer());
-        centerLeft.setDisable(true);
-        centerLeftChoice.setText(String.valueOf(Reader.getPlayer()));
+        lblLeft.setDisable(true);
+        lblLeft.setText(String.valueOf(Reader.getPlayer()));
     }
 
     @FXML
     private void centerClicked(MouseEvent event) throws IOException {
         insert(new Coordinate(1, 1), Reader.getPlayer());
-        center.setDisable(true);
-        centerChoice.setText(String.valueOf(Reader.getPlayer()));
+        lblCenter.setDisable(true);
+        lblCenter.setText(String.valueOf(Reader.getPlayer()));
     }
 
     @FXML
-    private void centerRightClicked(MouseEvent event) throws IOException {
+    private void rightClicked(MouseEvent event) throws IOException {
         insert(new Coordinate(1, 2), Reader.getPlayer());
-        centerRight.setDisable(true);
-        centerRightChoice.setText(String.valueOf(Reader.getPlayer()));
+        lblRight.setDisable(true);
+        lblRight.setText(String.valueOf(Reader.getPlayer()));
     }
 
     @FXML
     private void bottomLeftClicked(MouseEvent event) throws IOException {
         insert(new Coordinate(2, 0), Reader.getPlayer());
-        bottomLeft.setDisable(true);
-        bottomLeftChoice.setText(String.valueOf(Reader.getPlayer()));
+        lblBottomLeft.setDisable(true);
+        lblBottomLeft.setText(String.valueOf(Reader.getPlayer()));
     }
 
     @FXML
     private void bottomClicked(MouseEvent event) throws IOException {
         insert(new Coordinate(2, 1), Reader.getPlayer());
-        bottom.setDisable(true);
-        bottomChoice.setText(String.valueOf(Reader.getPlayer()));
+        lblBottom.setDisable(true);
+        lblBottom.setText(String.valueOf(Reader.getPlayer()));
     }
 
     @FXML
     private void bottomRightClicked(MouseEvent event) throws IOException {
         insert(new Coordinate(2, 2), Reader.getPlayer());
-        bottomRight.setDisable(true);
-        bottomRightChoice.setText(String.valueOf(Reader.getPlayer()));
+        lblBottomRight.setDisable(true);
+        lblBottomRight.setText(String.valueOf(Reader.getPlayer()));
     }
 
     private Coordinate generateCoord() {
@@ -227,6 +201,13 @@ public class PlayboardController implements Initializable {
                 break; 
         }
         return c;
+    }
+
+    @FXML
+    private void surrender(MouseEvent event) throws IOException {
+        Reader.setGameResult(-1);
+        App.setRoot("Credits");
+        
     }
 
     

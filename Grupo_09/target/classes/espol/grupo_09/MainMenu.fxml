@@ -29,7 +29,7 @@
    <center>
       <VBox alignment="CENTER" prefHeight="421.0" prefWidth="360.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="btPlay" alignment="CENTER" contentDisplay="CENTER" onAction="#switchToChar" prefHeight="74.0" prefWidth="153.0" styleClass="changeButton" stylesheets="@../../Styles/buttons.css" text="Let's Play!" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="btPlay" alignment="CENTER" contentDisplay="CENTER" onAction="#switchToGameMode" prefHeight="74.0" prefWidth="153.0" styleClass="changeButton" stylesheets="@../../Styles/buttons.css" text="Let's Play!" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
