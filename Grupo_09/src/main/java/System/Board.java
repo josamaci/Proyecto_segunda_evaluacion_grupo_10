@@ -69,7 +69,7 @@ public class Board {
         int i = 3;
         if(winner(Reader.getPlayer())){
             i = 0;
-        }else if(winner(Reader.getPC())){
+        }else if(winner(Reader.getPc())){
             i = 1;
         }else if (!isNotComplete()){
             i = 2;
@@ -238,8 +238,8 @@ public class Board {
     //This is only for PC
     public Coordinate minimaxCoord(){
         Coordinate coords = null;
-        ArrayList<Coordinate> newCoords = this.minimax(Reader.getPC(), Reader.getPlayer()).getCoordinatesOf(Reader.getPC());
-        ArrayList<Coordinate> oldCoords = this.getCoordinatesOf(Reader.getPC());
+        ArrayList<Coordinate> newCoords = this.minimax(Reader.getPc(), Reader.getPlayer()).getCoordinatesOf(Reader.getPc());
+        ArrayList<Coordinate> oldCoords = this.getCoordinatesOf(Reader.getPc());
         for(Coordinate c: newCoords){
             if(!oldCoords.contains(c)){
                 coords = c;

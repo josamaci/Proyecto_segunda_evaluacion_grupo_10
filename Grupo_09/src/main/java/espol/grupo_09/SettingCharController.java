@@ -39,7 +39,7 @@ public class SettingCharController implements Initializable {
             btSettingFirst.setDisable(true);
         } else {
             Reader.setPlayer(btX.getText().charAt(0));
-            Reader.setPC(bt0.getText().charAt(0));
+            Reader.setPc(bt0.getText().charAt(0));
             btSettingFirst.setDisable(false);
         }
 
@@ -51,7 +51,7 @@ public class SettingCharController implements Initializable {
             btSettingFirst.setDisable(true);
         } else {
             Reader.setPlayer(bt0.getText().charAt(0));
-            Reader.setPC(btX.getText().charAt(0));
+            Reader.setPc(btX.getText().charAt(0));
             btSettingFirst.setDisable(false);
         }
     }

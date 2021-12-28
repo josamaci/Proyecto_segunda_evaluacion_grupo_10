@@ -32,9 +32,14 @@
                         <Insets top="10.0" />
                      </opaqueInsets>
                   </HBox>
+                  <Circle fill="WHITE" opacity="0.5" radius="5.0" stroke="TRANSPARENT" strokeType="INSIDE">
+                     <HBox.margin>
+                        <Insets left="65.0" right="20.0" top="40.0" />
+                     </HBox.margin>
+                  </Circle>
                   <Circle disable="true" fill="WHITE" radius="5.0" stroke="TRANSPARENT" strokeType="INSIDE">
                      <HBox.margin>
-                        <Insets left="85.0" right="20.0" top="40.0" />
+                        <Insets left="20.0" right="20.0" top="40.0" />
                      </HBox.margin>
                   </Circle>
                   <Circle fill="WHITE" opacity="0.5" radius="5.0" stroke="TRANSPARENT" strokeType="INSIDE">
