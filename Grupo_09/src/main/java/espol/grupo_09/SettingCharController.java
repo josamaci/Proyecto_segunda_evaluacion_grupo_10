@@ -27,10 +27,20 @@ public class SettingCharController implements Initializable {
     private ToggleGroup btGroupChar;
     @FXML
     private Button btBackToGameMode;
+    @FXML
+    private Label lblChar;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         btSettingFirst.setDisable(true);
+        switch(Reader.getGameMode()){
+            case -1: lblChar.setText("Choose the character\nfor PC1!");
+                break;
+            case 0: lblChar.setText("Choose your character!");
+                break;
+            case 1: lblChar.setText("Choose the character\nfor the Player1!");
+                break;
+        }
     }
 
     @FXML

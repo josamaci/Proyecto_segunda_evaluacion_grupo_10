@@ -49,12 +49,12 @@
                   </Circle>
                </children>
             </HBox>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="70.0" prefWidth="350.0" text="Choose your character!" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="lblChar" alignment="CENTER" contentDisplay="CENTER" prefHeight="70.0" prefWidth="350.0" text="Choose your character!" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
                <VBox.margin>
-                  <Insets />
+                  <Insets bottom="20.0" />
                </VBox.margin>
             </Label>
             <HBox alignment="CENTER" prefHeight="124.0" prefWidth="362.0">

@@ -5,17 +5,14 @@ import System.Coordinate;
 import System.Reader;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Random;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
 
 public class PlayboardController implements Initializable {
 
@@ -209,7 +206,5 @@ public class PlayboardController implements Initializable {
         App.setRoot("Credits");
         
     }
-
-    
 
 }
