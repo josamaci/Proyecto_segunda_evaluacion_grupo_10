@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="bpPlayboard" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="360.0" styleClass="bpMenu" stylesheets="@../../Styles/windows.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="espol.grupo_09.PlayboardController">
+<BorderPane fx:id="bpPlayboard" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="360.0" styleClass="bpMenu" stylesheets="@../../Styles/windows.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="espol.grupo_09.PlayboardController">
    <center>
       <GridPane alignment="CENTER" gridLinesVisible="true" maxHeight="300.0" maxWidth="300.0" minHeight="300.0" minWidth="300.0" prefHeight="300.0" prefWidth="300.0" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -26,7 +26,7 @@
          <children>
             <Label fx:id="lblTopLeft" alignment="CENTER" contentDisplay="CENTER" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" onMouseClicked="#topLeftClicked" prefHeight="100.0" prefWidth="100.0" stylesheets="@../../Styles/Label.css" textAlignment="CENTER">
                <font>
-                  <Font size="50.0" />
+                  <Font name="System Bold" size="48.0" />
                </font>
                <styleClass>
                   <String fx:value="hoverLabel" />
@@ -36,7 +36,7 @@
             </Label>
             <Label fx:id="lblTop" alignment="CENTER" contentDisplay="CENTER" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" onMouseClicked="#topClicked" prefHeight="100.0" prefWidth="100.0" stylesheets="@../../Styles/Label.css" textAlignment="CENTER" GridPane.columnIndex="1">
                <font>
-                  <Font size="50.0" />
+                  <Font name="System Bold" size="48.0" />
                </font>
                <styleClass>
                   <String fx:value="hoverLabel" />
@@ -46,7 +46,7 @@
             </Label>
             <Label fx:id="lblTopRight" alignment="CENTER" contentDisplay="CENTER" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" onMouseClicked="#topRightClicked" prefHeight="100.0" prefWidth="100.0" stylesheets="@../../Styles/Label.css" textAlignment="CENTER" GridPane.columnIndex="2">
                <font>
-                  <Font size="50.0" />
+                  <Font name="System Bold" size="48.0" />
                </font>
                <styleClass>
                   <String fx:value="hoverLabel" />
@@ -56,7 +56,7 @@
             </Label>
             <Label fx:id="lblLeft" alignment="CENTER" contentDisplay="CENTER" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" onMouseClicked="#leftClicked" prefHeight="100.0" prefWidth="100.0" stylesheets="@../../Styles/Label.css" textAlignment="CENTER" GridPane.rowIndex="1">
                <font>
-                  <Font size="50.0" />
+                  <Font name="System Bold" size="48.0" />
                </font>
                <styleClass>
                   <String fx:value="hoverLabel" />
@@ -66,7 +66,7 @@
             </Label>
             <Label fx:id="lblCenter" alignment="CENTER" contentDisplay="CENTER" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" onMouseClicked="#centerClicked" prefHeight="100.0" prefWidth="100.0" stylesheets="@../../Styles/Label.css" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
-                  <Font size="50.0" />
+                  <Font name="System Bold" size="48.0" />
                </font>
                <styleClass>
                   <String fx:value="hoverLabel" />
@@ -76,7 +76,7 @@
             </Label>
             <Label fx:id="lblRight" alignment="CENTER" contentDisplay="CENTER" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" onMouseClicked="#rightClicked" prefHeight="100.0" prefWidth="100.0" stylesheets="@../../Styles/Label.css" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <font>
-                  <Font size="50.0" />
+                  <Font name="System Bold" size="48.0" />
                </font>
                <styleClass>
                   <String fx:value="hoverLabel" />
@@ -86,7 +86,7 @@
             </Label>
             <Label fx:id="lblBottomLeft" alignment="CENTER" contentDisplay="CENTER" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" onMouseClicked="#bottomLeftClicked" prefHeight="100.0" prefWidth="100.0" stylesheets="@../../Styles/Label.css" textAlignment="CENTER" GridPane.rowIndex="2">
                <font>
-                  <Font size="50.0" />
+                  <Font name="System Bold" size="48.0" />
                </font>
                <styleClass>
                   <String fx:value="hoverLabel" />
@@ -96,7 +96,7 @@
             </Label>
             <Label fx:id="lblBottom" alignment="CENTER" contentDisplay="CENTER" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" onMouseClicked="#bottomClicked" prefHeight="100.0" prefWidth="100.0" stylesheets="@../../Styles/Label.css" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
-                  <Font size="50.0" />
+                  <Font name="System Bold" size="48.0" />
                </font>
                <styleClass>
                   <String fx:value="hoverLabel" />
@@ -106,7 +106,7 @@
             </Label>
             <Label fx:id="lblBottomRight" alignment="CENTER" contentDisplay="CENTER" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" onMouseClicked="#bottomRightClicked" prefHeight="100.0" prefWidth="100.0" stylesheets="@../../Styles/Label.css" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <font>
-                  <Font size="50.0" />
+                  <Font name="System Bold" size="48.0" />
                </font>
                <styleClass>
                   <String fx:value="hoverLabel" />
@@ -118,10 +118,13 @@
       </GridPane>
    </center>
    <bottom>
-      <Button fx:id="btSurrender" alignment="CENTER" contentDisplay="CENTER" maxHeight="70.0" maxWidth="200.0" minHeight="70.0" minWidth="200.0" mnemonicParsing="false" onMouseClicked="#surrender" prefHeight="70.0" prefWidth="200.0" text="Surrender" textAlignment="CENTER" BorderPane.alignment="CENTER">
+      <Button fx:id="btSurrender" alignment="CENTER" contentDisplay="CENTER" maxHeight="70.0" maxWidth="200.0" minHeight="70.0" minWidth="200.0" mnemonicParsing="false" onMouseClicked="#surrender" prefHeight="70.0" prefWidth="200.0" styleClass="Redbutton" stylesheets="@../../Styles/buttons.css" text="Surrender" textAlignment="CENTER" textFill="WHITE" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="100.0" />
          </BorderPane.margin>
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
+         </font>
       </Button>
    </bottom>
 </BorderPane>
