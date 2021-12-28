@@ -31,6 +31,14 @@ public class SettingFirstController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         btPlayboard.setDisable(true);
+        switch(Reader.getGameMode()){
+            case -1: btYou.setText("PC1"); btPC.setText("PC2");
+                break;
+            case 0: btYou.setText("YOU"); btPC.setText("PC");
+                break;
+            case 1: btYou.setText("Player 1"); btPC.setText("Player 2");
+                break;
+        }
     }
 
     @FXML
