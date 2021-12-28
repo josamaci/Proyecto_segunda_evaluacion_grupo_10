@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="pSettings" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="361.0" styleClass="bpMenu" stylesheets="@../../Styles/windows.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="espol.grupo_09.SettingCharController">
+<Pane fx:id="pSettings" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="361.0" styleClass="bpMenu" stylesheets="@../../Styles/windows.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="espol.grupo_09.SettingCharController">
    <children>
       <VBox alignment="CENTER" prefHeight="640.0" prefWidth="361.0" stylesheets="@../../Styles/windows.css">
          <children>
@@ -75,7 +75,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="124.0" prefWidth="362.0">
                <children>
-                  <ToggleButton fx:id="bt0" contentDisplay="CENTER" mnemonicParsing="false" onAction="#char0" prefHeight="100.0" prefWidth="200.0" styleClass="optionButton" stylesheets="@../../Styles/buttons.css" text="0" textAlignment="CENTER" textFill="WHITE" toggleGroup="$btGroupChar">
+                  <ToggleButton fx:id="bt0" contentDisplay="CENTER" mnemonicParsing="false" onAction="#char0" prefHeight="100.0" prefWidth="200.0" styleClass="optionButton" stylesheets="@../../Styles/buttons.css" text="O" textAlignment="CENTER" textFill="WHITE" toggleGroup="$btGroupChar">
                      <font>
                         <Font name="System Bold" size="32.0" />
                      </font>

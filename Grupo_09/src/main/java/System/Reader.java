@@ -2,11 +2,29 @@
 package System;
 
 public class Reader {
-    private static char player = '0';
+    private static char player = 'O';
     private static char pc = 'x';
     private static boolean starting = false;
     private static int gameResult = 2;
+    private static int gameMode = 0;
 
+    public static char getPc() {
+        return pc;
+    }
+
+    public static void setPc(char pc) {
+        Reader.pc = pc;
+    }
+
+    public static int getGameMode() {
+        return gameMode;
+    }
+
+    public static void setGameMode(int gameMode) {
+        Reader.gameMode = gameMode;
+    }
+    
+    
     public static int getGameResult() {
         return gameResult;
     }
@@ -21,14 +39,6 @@ public class Reader {
 
     public static void setPlayer(char player) {
         Reader.player = player;
-    }
-
-    public static char getPC() {
-        return pc;
-    }
-
-    public static void setPC(char pc) {
-        Reader.pc = pc;
     }
 
     public static boolean getStarting() {
