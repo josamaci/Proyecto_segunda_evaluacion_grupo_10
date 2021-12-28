@@ -1,0 +1,8 @@
+/* 
+    Created on : 28 dic. 2021, 15:10:07
+    Author     : kevin
+*/
+
+.label:disabled{
+    -fx-opacity: 2;
+}
