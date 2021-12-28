@@ -25,47 +25,47 @@
          <children>
             <Label fx:id="lblTopLeft" alignment="CENTER" contentDisplay="CENTER" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" onMouseClicked="#topLeftClicked" prefHeight="100.0" prefWidth="100.0" textAlignment="CENTER">
                <font>
-                  <Font size="30.0" />
+                  <Font size="50.0" />
                </font>
             </Label>
             <Label fx:id="lblTop" alignment="CENTER" contentDisplay="CENTER" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" onMouseClicked="#topClicked" prefHeight="100.0" prefWidth="100.0" textAlignment="CENTER" GridPane.columnIndex="1">
                <font>
-                  <Font size="30.0" />
+                  <Font size="50.0" />
                </font>
             </Label>
-            <Label fx:id="lblTopRight" alignment="CENTER" contentDisplay="CENTER" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" onMouseClicked="#topRightClicked" prefHeight="100.0" prefWidth="100.0" textAlignment="CENTER" GridPane.columnIndex="2">
+            <Label fx:id="lblTopRight" alignment="CENTER" contentDisplay="CENTER" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" onMouseClicked="#topRightClicked" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: WHITE;" textAlignment="CENTER" GridPane.columnIndex="2">
                <font>
-                  <Font size="30.0" />
+                  <Font size="50.0" />
                </font>
             </Label>
             <Label fx:id="lblLeft" alignment="CENTER" contentDisplay="CENTER" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" onMouseClicked="#leftClicked" prefHeight="100.0" prefWidth="100.0" textAlignment="CENTER" GridPane.rowIndex="1">
                <font>
-                  <Font size="30.0" />
+                  <Font size="50.0" />
                </font>
             </Label>
             <Label fx:id="lblCenter" alignment="CENTER" contentDisplay="CENTER" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" onMouseClicked="#centerClicked" prefHeight="100.0" prefWidth="100.0" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
-                  <Font size="30.0" />
+                  <Font size="50.0" />
                </font>
             </Label>
             <Label fx:id="lblRight" alignment="CENTER" contentDisplay="CENTER" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" onMouseClicked="#rightClicked" prefHeight="100.0" prefWidth="100.0" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <font>
-                  <Font size="30.0" />
+                  <Font size="50.0" />
                </font>
             </Label>
             <Label fx:id="lblBottomLeft" alignment="CENTER" contentDisplay="CENTER" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" onMouseClicked="#bottomLeftClicked" prefHeight="100.0" prefWidth="100.0" textAlignment="CENTER" GridPane.rowIndex="2">
                <font>
-                  <Font size="30.0" />
+                  <Font size="50.0" />
                </font>
             </Label>
             <Label fx:id="lblBottom" alignment="CENTER" contentDisplay="CENTER" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" onMouseClicked="#bottomClicked" prefHeight="100.0" prefWidth="100.0" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
-                  <Font size="30.0" />
+                  <Font size="50.0" />
                </font>
             </Label>
             <Label fx:id="lblBottomRight" alignment="CENTER" contentDisplay="CENTER" maxHeight="100.0" maxWidth="100.0" minHeight="100.0" minWidth="100.0" onMouseClicked="#bottomRightClicked" prefHeight="100.0" prefWidth="100.0" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <font>
-                  <Font size="30.0" />
+                  <Font size="50.0" />
                </font>
             </Label>
          </children>
