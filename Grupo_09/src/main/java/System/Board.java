@@ -203,33 +203,39 @@ public class Board {
         int i = -100;
         LinkedList<Tree<Board>> alternativesYou = this.generateAlternatives(you);
         Map<Tree<Board>, Integer> mapYou = new HashMap<>();
-        for(Tree<Board> boa: alternativesYou){
-            int j = 0;
-            LinkedList<Tree<Board>> alternativesRival = boa.getRoot().getContent().generateAlternatives(rival);
-            j = alternativesRival.get(0).getRoot().getContent().boardUtility(you, rival);
-            for(Tree<Board> board: alternativesRival){
-                mapYou.put(boa, j);
-                if(board.getRoot().getContent().boardUtility(you, rival)<j){
-                    j = board.getRoot().getContent().boardUtility(you, rival);
-                    mapYou.replace(boa,j);
+        if(alternativesYou.size()>1){
+            for(Tree<Board> boa: alternativesYou){
+                int j = 0;
+                LinkedList<Tree<Board>> alternativesRival = boa.getRoot().getContent().generateAlternatives(rival);
+                j = alternativesRival.get(0).getRoot().getContent().boardUtility(you, rival);
+                for(Tree<Board> board: alternativesRival){
+                    mapYou.put(boa, j);
+                    if(board.getRoot().getContent().boardUtility(you, rival)<j){
+                        j = board.getRoot().getContent().boardUtility(you, rival);
+                        mapYou.replace(boa,j);
+                    }
                 }
             }
+        }else if(alternativesYou.size()==1){
+            mapYou.put(alternativesYou.get(0),0);
         }
         return mapYou;
     }
     
     public Board minimax(Character you, Character rival){
         Map<Tree<Board>, Integer> mapYou = this.generateMinimax(you, rival);
-        int content = -10;
         Board b = null;
-        for(int i: mapYou.values()){
-            if(i>content){
-                content = i;
+        if(mapYou.size()>0){
+            int content = -10;
+            for(int i: mapYou.values()){
+                if(i>content){
+                    content = i;
+                }
             }
-        }
-        for(Tree<Board> boa: mapYou.keySet()){
-            if(mapYou.get(boa).equals(content)){
-                b = new Board(boa.getRoot().getContent().getBoard());
+            for(Tree<Board> boa: mapYou.keySet()){
+                if(mapYou.get(boa).equals(content)){
+                    b = new Board(boa.getRoot().getContent().getBoard());
+                }
             }
         }
         return b;
@@ -240,9 +246,11 @@ public class Board {
         Coordinate coords = null;
         ArrayList<Coordinate> newCoords = this.minimax(Reader.getPc(), Reader.getPlayer()).getCoordinatesOf(Reader.getPc());
         ArrayList<Coordinate> oldCoords = this.getCoordinatesOf(Reader.getPc());
-        for(Coordinate c: newCoords){
-            if(!oldCoords.contains(c)){
-                coords = c;
+        if(newCoords!=null){
+            for(Coordinate c: newCoords){
+                if(!oldCoords.contains(c)){
+                    coords = c;
+                }
             }
         }
         return coords;

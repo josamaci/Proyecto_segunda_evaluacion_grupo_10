@@ -43,19 +43,25 @@ public class PlayboardController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         b = new Board();
-        if(!Reader.getStarting()){
+        
+        //PVE y empieza la PC
+        if(!Reader.getStarting() && Reader.getGameMode()==0){
             try {
                 pcInsert(generateCoord());
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
         }
+        
+        
     }
    
     private void insert(Coordinate c, char ch) throws IOException{
         String result = b.insertChar(c, ch);
         resultEvaluation(result);
-        pcInsert(b.minimaxCoord());
+        if(b.getCoordinatesOf(' ').size()>0){
+            pcInsert(b.minimaxCoord());
+        }
     }
         
     private void pcInsert(Coordinate c) throws IOException {
