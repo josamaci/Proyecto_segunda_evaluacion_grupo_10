@@ -185,10 +185,8 @@ public class Game {
     //This is only for PC
     public Coordinate minimaxCoord(){
         Coordinate coords = new Coordinate();
-        Player who = whoTurn();
-        Player next = nextTurn();
-        if(who.getIsPC()){
-            ArrayList<Coordinate> newCoords = this.minimax(who, next).getRoot().getContent().getCoordinatesOf(p2.getCharacter());
+        if(whoTurn().getIsPC()){
+            ArrayList<Coordinate> newCoords = this.minimax(whoTurn(), nextTurn()).getRoot().getContent().getCoordinatesOf(p2.getCharacter());
             ArrayList<Coordinate> oldCoords = actualBoard.getRoot().getContent().getCoordinatesOf(p2.getCharacter());
             if(newCoords!=null && oldCoords!=null){
                 for(Coordinate c: newCoords){

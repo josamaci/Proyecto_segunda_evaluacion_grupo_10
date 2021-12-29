@@ -58,15 +58,7 @@ public class PlayboardController implements Initializable {
         lblP1.setText(game.getP1().getName()+": "+game.getP1().getCharacter());
         lblP2.setText(game.getP2().getName()+": "+game.getP2().getCharacter());
         lblTurn.setText(game.whoTurn().getName());
-        lblTopLeft.setDisable(false);
-        lblTop.setDisable(false);
-        lblTopRight.setDisable(false);
-        lblLeft.setDisable(false);
-        lblCenter.setDisable(false);
-        lblRight.setDisable(false);
-        lblBottomLeft.setDisable(false);
-        lblBottom.setDisable(false);
-        lblBottomRight.setDisable(false);
+        ableButtons();
         System.out.println(game.getActualBoard());
         //PVE y empieza la PC
         if(game.getP2().getIsTurn() && game.getGameMode()==0){
@@ -79,16 +71,7 @@ public class PlayboardController implements Initializable {
         }
         //PC vs PC
         if(game.getGameMode()==-1){
-            lblTopLeft.setDisable(true);
-            lblTop.setDisable(true);
-            lblTopRight.setDisable(true);
-            lblLeft.setDisable(true);
-            lblCenter.setDisable(true);
-            lblRight.setDisable(true);
-            lblBottomLeft.setDisable(true);
-            lblBottom.setDisable(true);
-            lblBottomRight.setDisable(true);
-            btSurrender.setVisible(false);
+            disableButtons();
             try {
                 pcInsert(game.minimaxCoord());
             } catch (IOException ex) {
@@ -293,4 +276,28 @@ public class PlayboardController implements Initializable {
         }
     }
     
+    private void disableButtons(){
+        lblTopLeft.setDisable(true);
+        lblTop.setDisable(true);
+        lblTopRight.setDisable(true);
+        lblLeft.setDisable(true);
+        lblCenter.setDisable(true);
+        lblRight.setDisable(true);
+        lblBottomLeft.setDisable(true);
+        lblBottom.setDisable(true);
+        lblBottomRight.setDisable(true);
+        btSurrender.setVisible(false);
+    }
+    
+    private void ableButtons(){
+        lblTopLeft.setDisable(false);
+        lblTop.setDisable(false);
+        lblTopRight.setDisable(false);
+        lblLeft.setDisable(false);
+        lblCenter.setDisable(false);
+        lblRight.setDisable(false);
+        lblBottomLeft.setDisable(false);
+        lblBottom.setDisable(false);
+        lblBottomRight.setDisable(false);
+    }
 }
