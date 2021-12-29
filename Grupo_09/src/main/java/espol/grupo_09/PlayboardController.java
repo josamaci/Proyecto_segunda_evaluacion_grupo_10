@@ -49,7 +49,7 @@ public class PlayboardController implements Initializable {
         //PVE y empieza la PC
         if(game.getP2().getIsTurn() && game.getGameMode()==0){
             try {
-                pcInsert(generateCoord());
+                pcInsert(game.minimaxCoord());
                 System.out.println(game.getActualBoard());
             } catch (IOException ex) {
                 ex.printStackTrace();

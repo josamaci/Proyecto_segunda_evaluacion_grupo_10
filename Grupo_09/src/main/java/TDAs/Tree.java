@@ -43,7 +43,7 @@ public class Tree<T> {
         if(this.getChildren()!=null){
             s += "\n----HIJOS----\n";
             for(Tree<T> t: this.getChildren()){            
-                s += t.getRoot().getContent().toString();
+                s += t.getRoot().getContent().toString();                
             }
             s += "\n-------------\n";
         }
