@@ -105,12 +105,10 @@ public class PlayboardController implements Initializable {
             if(game.getResult().equals("STILL PLAYING")){
                 System.out.println(game.getActualBoard());
             }
-            if(game.getActualBoard().getRoot().getContent().getCoordinatesOf(' ').size()>0){
+            if(game.getActualBoard().getRoot().getContent().getCoordinatesOf(' ').size()>0 && game.getResult().equals("STILL PLAYING")){
                 pcInsert(game.minimaxCoord());
                 lblTurn.setText(game.whoTurn().getName());
-                if(game.getResult().equals("STILL PLAYING")){
                 System.out.println(game.getActualBoard());
-                }
             }
         }else if(game.getGameMode()==1){
             game.insertChar(c);
@@ -168,6 +166,7 @@ public class PlayboardController implements Initializable {
     
     private void resultEvaluation(String result) throws IOException{
         if(!game.getResult().equals("STILL PLAYING")){
+            System.out.println(game.getActualBoard());
             Reader.setGameResult(game.getResult());
             App.setRoot("Credits");
         }

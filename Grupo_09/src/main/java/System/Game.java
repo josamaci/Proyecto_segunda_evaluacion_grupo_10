@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
+import java.util.Random;
 
 public class Game {
     private Tree<Board> originalBoard;
@@ -82,9 +83,6 @@ public class Game {
             actualBoard = tb;
         }
         switchTurn();
-        if(whoTurn().equals(p2) && p2.getIsPC()){
-            generateAlternatives(whoTurn());
-        }
         winOrLose();
     }
 
@@ -101,7 +99,7 @@ public class Game {
         if(winner(p1)){
             result = p1.getName()+" WIN";
         }else if(winner(p2)){
-            if(p2.getIsPC()){
+            if(p2.getIsPC() && p2.getName().equals("PC")){
                 result = p1.getName()+" LOSE";
             }else{
                 result = p2.getName()+" WIN";
@@ -158,8 +156,12 @@ public class Game {
     
     public Tree<Board> minimax(Player you, Player rival){
         Map<Tree<Board>, Integer> mapYou = this.generateMinimax(p2, p1);
+        LinkedList<Tree<Board>> choosenList = new LinkedList<>();
         Tree<Board> b = null;
         if(mapYou.size()>0){
+            System.out.println("----MINIMAX----");
+            System.out.println(mapYou);
+            System.out.println("---------------");
             int content = -10;
             for(int i: mapYou.values()){
                 if(i>content){
@@ -168,9 +170,14 @@ public class Game {
             }
             for(Tree<Board> boa: mapYou.keySet()){
                 if(mapYou.get(boa).equals(content)){
-                    b = boa;
+                    choosenList.add(boa);
                 }
             }
+            Random r = new Random();
+            b = choosenList.get(r.nextInt(choosenList.size()));
+            System.out.println("----CHOOSEN----");
+            System.out.println(b+", "+content);
+            System.out.println("---------------");
         }
         return b;
     }
@@ -178,14 +185,15 @@ public class Game {
     //This is only for PC
     public Coordinate minimaxCoord(){
         Coordinate coords = new Coordinate();
-        if(whoTurn().getIsPC()){
-            ArrayList<Coordinate> newCoords = this.minimax(whoTurn(), nextTurn()).getRoot().getContent().getCoordinatesOf(p2.getCharacter());
+        Player who = whoTurn();
+        Player next = nextTurn();
+        if(who.getIsPC()){
+            ArrayList<Coordinate> newCoords = this.minimax(who, next).getRoot().getContent().getCoordinatesOf(p2.getCharacter());
             ArrayList<Coordinate> oldCoords = actualBoard.getRoot().getContent().getCoordinatesOf(p2.getCharacter());
             if(newCoords!=null && oldCoords!=null){
                 for(Coordinate c: newCoords){
                     if(!oldCoords.contains(c)){
                         coords = c;
-
                     }
                 }
             }
