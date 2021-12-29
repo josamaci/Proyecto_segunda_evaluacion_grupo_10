@@ -1,12 +1,16 @@
 package espol.grupo_09;
 
+import System.FileManager;
+import java.io.IOException;
+import java.util.Optional;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
-
-import java.io.IOException;
 
 public class App extends Application {
 
@@ -18,6 +22,15 @@ public class App extends Application {
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
+        if (FileManager.loadGame() != null) {
+            Alert a = new Alert(AlertType.CONFIRMATION);
+            a.setTitle("Load...");
+            a.setContentText("Wanna reload your last game?");
+            Optional<ButtonType> confi = a.showAndWait();
+            if (confi.get() == ButtonType.OK) {
+                FileManager.loadGame();
+            }
+        }
     }
 
     static void setRoot(String fxml) throws IOException {
@@ -31,6 +44,11 @@ public class App extends Application {
 
     public static void main(String[] args) {
         launch();
+
     }
 
+    @Override
+    public void stop() throws IOException {
+        FileManager.saveGame();
+    }
 }

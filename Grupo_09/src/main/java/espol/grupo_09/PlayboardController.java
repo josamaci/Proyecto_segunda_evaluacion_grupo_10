@@ -2,20 +2,26 @@ package espol.grupo_09;
 
 import System.Board;
 import System.Coordinate;
+import System.FileManager;
 import System.Game;
 import System.Reader;
 import java.io.IOException;
 import static java.lang.Thread.sleep;
 import java.net.URL;
+import java.util.Optional;
 import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.WindowEvent;
 
 public class PlayboardController implements Initializable {
 
@@ -51,7 +57,7 @@ public class PlayboardController implements Initializable {
     private Label lblP11;
     @FXML
     private Label lblTurn;
-    
+            
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         game = new Game (new Board(), Reader.getPlayer1(), Reader.getPlayer2(), Reader.getGameMode());
