@@ -5,9 +5,11 @@ import System.Coordinate;
 import System.Game;
 import System.Reader;
 import java.io.IOException;
+import static java.lang.Thread.sleep;
 import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -45,6 +47,15 @@ public class PlayboardController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         game = new Game (new Board(), Reader.getPlayer1(), Reader.getPlayer2(), Reader.getGameMode());
+        lblTopLeft.setDisable(false);
+        lblTop.setDisable(false);
+        lblTopRight.setDisable(false);
+        lblLeft.setDisable(false);
+        lblCenter.setDisable(false);
+        lblRight.setDisable(false);
+        lblBottomLeft.setDisable(false);
+        lblBottom.setDisable(false);
+        lblBottomRight.setDisable(false);
         System.out.println(game.getActualBoard());
         //PVE y empieza la PC
         if(game.getP2().getIsTurn() && game.getGameMode()==0){
@@ -54,7 +65,25 @@ public class PlayboardController implements Initializable {
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
-        }    
+        }
+        //PC vs PC
+        if(game.getGameMode()==-1){
+            lblTopLeft.setDisable(true);
+            lblTop.setDisable(true);
+            lblTopRight.setDisable(true);
+            lblLeft.setDisable(true);
+            lblCenter.setDisable(true);
+            lblRight.setDisable(true);
+            lblBottomLeft.setDisable(true);
+            lblBottom.setDisable(true);
+            lblBottomRight.setDisable(true);
+            btSurrender.setVisible(false);
+            try {
+                pcInsert(game.minimaxCoord());
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
     }
    
     private void insert(Coordinate c) throws IOException{
@@ -80,39 +109,46 @@ public class PlayboardController implements Initializable {
     }
         
     private void pcInsert(Coordinate c) throws IOException {
-        game.insertChar(c);
         disablePanel(c);
+        game.insertChar(c);
         resultEvaluation(game.getResult());
+        if(game.getGameMode()==-1){
+            game.setGameMode(-2);
+            ComputerInsert ci = new ComputerInsert();
+            Thread t = new Thread(ci);
+            t.setDaemon(true);
+            t.start();
+        }
     }
     
     private void disablePanel(Coordinate c){
         if(c.equals(new Coordinate(0,0))){
         lblTopLeft.setDisable(true);
-        lblTopLeft.setText(String.valueOf(game.getP2().getCharacter()));}
+        lblTopLeft.setText(String.valueOf(game.whoTurn().getCharacter()));}
         if(c.equals(new Coordinate(0,1))){
         lblTop.setDisable(true);
-        lblTop.setText(String.valueOf(game.getP2().getCharacter()));}
+        lblTop.setText(String.valueOf(game.whoTurn().getCharacter()));}
         if(c.equals(new Coordinate(0,2))){
         lblTopRight.setDisable(true);
-        lblTopRight.setText(String.valueOf(game.getP2().getCharacter()));}
+        lblTopRight.setText(String.valueOf(game.whoTurn().getCharacter()));}
         if(c.equals(new Coordinate(1,0))){
         lblLeft.setDisable(true);
-        lblLeft.setText(String.valueOf(game.getP2().getCharacter()));}
+        lblLeft.setText(String.valueOf(game.whoTurn().getCharacter()));}
         if(c.equals(new Coordinate(1,1))){
         lblCenter.setDisable(true);
-        lblCenter.setText(String.valueOf(game.getP2().getCharacter()));}
+        lblCenter.setText(String.valueOf(game.whoTurn().getCharacter()));}
         if(c.equals(new Coordinate(1,2))){
         lblRight.setDisable(true);
-        lblRight.setText(String.valueOf(game.getP2().getCharacter()));}
+        lblRight.setText(String.valueOf(game.whoTurn().getCharacter()));}
         if(c.equals(new Coordinate(2,0))){
         lblBottomLeft.setDisable(true);
-        lblBottomLeft.setText(String.valueOf(game.getP2().getCharacter()));}
+        lblBottomLeft.setText(String.valueOf(game.whoTurn().getCharacter()));}
         if(c.equals(new Coordinate(2,1))){
         lblBottom.setDisable(true);
-        lblBottom.setText(String.valueOf(game.getP2().getCharacter()));}
+        lblBottom.setText(String.valueOf(game.whoTurn().getCharacter()));}
         if(c.equals(new Coordinate(2,2))){
         lblBottomRight.setDisable(true);
-        lblBottomRight.setText(String.valueOf(game.getP2().getCharacter()));}
+        lblBottomRight.setText(String.valueOf(game.whoTurn().getCharacter()));}
     }
     
     private void resultEvaluation(String result) throws IOException{
@@ -219,5 +255,28 @@ public class PlayboardController implements Initializable {
         App.setRoot("Credits");
         
     }
-
+    
+    private class ComputerInsert implements Runnable{
+        @Override
+        public void run(){
+            try{
+                sleep(2000);
+                while(game.getResult().equals("STILL PLAYING")){
+                        Platform.runLater(()->{
+                            try {
+                                pcInsert(game.minimaxCoord());
+                                System.out.println(game.getActualBoard());
+                            } catch (IOException ex) {
+                                ex.printStackTrace();
+                            }
+                        ;});
+                        sleep(2000);
+                }
+            }catch(InterruptedException ex){
+                Thread.currentThread().interrupt();
+            }
+            
+        }
+    }
+    
 }

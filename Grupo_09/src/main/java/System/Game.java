@@ -178,13 +178,15 @@ public class Game {
     //This is only for PC
     public Coordinate minimaxCoord(){
         Coordinate coords = new Coordinate();
-        ArrayList<Coordinate> newCoords = this.minimax(p2, p1).getRoot().getContent().getCoordinatesOf(p2.getCharacter());
-        ArrayList<Coordinate> oldCoords = actualBoard.getRoot().getContent().getCoordinatesOf(p2.getCharacter());
-        if(newCoords!=null && oldCoords!=null){
-            for(Coordinate c: newCoords){
-                if(!oldCoords.contains(c)){
-                    coords = c;
-                    
+        if(whoTurn().getIsPC()){
+            ArrayList<Coordinate> newCoords = this.minimax(whoTurn(), nextTurn()).getRoot().getContent().getCoordinatesOf(p2.getCharacter());
+            ArrayList<Coordinate> oldCoords = actualBoard.getRoot().getContent().getCoordinatesOf(p2.getCharacter());
+            if(newCoords!=null && oldCoords!=null){
+                for(Coordinate c: newCoords){
+                    if(!oldCoords.contains(c)){
+                        coords = c;
+
+                    }
                 }
             }
         }
@@ -206,6 +208,14 @@ public class Game {
             return p1;
         }else{
             return p2;
+        }
+    }
+    
+    public Player nextTurn(){
+        if(p1.getIsTurn()){
+            return p2;
+        }else{
+            return p1;
         }
     }
 }
