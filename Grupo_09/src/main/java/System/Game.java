@@ -73,7 +73,9 @@ public class Game {
     }
     
     public void insertChar(Coordinate c){
-        generateAlternatives(whoTurn());
+        if(actualBoard.getChildren()==null){
+            generateAlternatives(whoTurn());
+        }
         Tree<Board> t = new Tree();
         Board b = new Board(actualBoard.getRoot().getContent().getBoard());
         b.insertChar(c,whoTurn().getCharacter());
@@ -134,7 +136,9 @@ public class Game {
     public Map<Tree<Board>, Integer> generateMinimax(Player you, Player rival){
         int i = -100;
         Map<Tree<Board>, Integer> mapYou = new HashMap<>();
+        if(actualBoard.getChildren()==null){
         generateAlternatives(you);
+        }
         if(actualBoard.getChildren().size()>1){
             for(Tree<Board> boa: actualBoard.getChildren()){
                 int j = 0;
@@ -210,18 +214,10 @@ public class Game {
     }
     
     public Player whoTurn(){
-        if(p1.getIsTurn()){
-            return p1;
-        }else{
-            return p2;
-        }
+        return (p1.getIsTurn()) ? p1: p2;
     }
     
     public Player nextTurn(){
-        if(p1.getIsTurn()){
-            return p2;
-        }else{
-            return p1;
-        }
+        return (p1.getIsTurn()) ? p2: p1;
     }
 }
