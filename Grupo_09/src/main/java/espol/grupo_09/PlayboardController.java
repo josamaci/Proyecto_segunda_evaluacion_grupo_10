@@ -149,7 +149,7 @@ public class PlayboardController implements Initializable {
     
     private void resultEvaluation(String result) throws IOException{
         if(!game.getResult().equals("STILL PLAYING")){
-            System.out.println(game.getActualBoard());
+            System.out.println(game.getOriginalBoard());
             Reader.setGameResult(game.getResult());
             App.setRoot("Credits");
         }
@@ -217,32 +217,6 @@ public class PlayboardController implements Initializable {
         lblBottomRight.setText(String.valueOf(game.whoTurn().getCharacter()));        
         insert(new Coordinate(2, 2));
         lblBottomRight.setDisable(true);
-    }
-
-    private Coordinate generateCoord() {
-        Coordinate c = null;
-        Random r = new Random();
-        switch(r.nextInt(9)){
-            case 0: c = new Coordinate(0, 0);
-                break;  
-            case 1: c = new Coordinate(0, 1);
-                break; 
-            case 2: c = new Coordinate(0, 2);
-                break; 
-            case 3: c = new Coordinate(1, 0);
-                break; 
-            case 4: c = new Coordinate(1, 1);
-                break; 
-            case 5: c = new Coordinate(1, 2);
-                break; 
-            case 6: c = new Coordinate(2, 0);
-                break; 
-            case 7: c = new Coordinate(2, 1);
-                break;  
-            case 8: c = new Coordinate(2, 2);
-                break; 
-        }
-        return c;
     }
 
     @FXML

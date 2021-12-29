@@ -41,11 +41,12 @@ public class Tree<T> {
     public String toString(){
         String s = this.getRoot().getContent().toString();
         if(this.getChildren()!=null){
-            /*s += "\n----HIJOS----\n";
-            for(Tree<T> t: this.getChildren()){            
-                s += t.getRoot().getContent().toString();                
+            s += "\n----HIJOS----\n";
+            for(Tree<T> t: this.getChildren()){
+                if(t!=null)
+                    s += t.getRoot().getContent().toString();                
             }
-            s += "\n-------------\n";*/
+            s += "\n-------------\n";
         }
         return s;
     }
