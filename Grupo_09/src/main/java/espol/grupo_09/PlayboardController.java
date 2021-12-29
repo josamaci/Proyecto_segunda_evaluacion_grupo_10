@@ -47,12 +47,17 @@ public class PlayboardController implements Initializable {
     private Label lblP1;
     @FXML
     private Label lblP2;
+    @FXML
+    private Label lblP11;
+    @FXML
+    private Label lblTurn;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         game = new Game (new Board(), Reader.getPlayer1(), Reader.getPlayer2(), Reader.getGameMode());
         lblP1.setText(game.getP1().getName()+": "+game.getP1().getCharacter());
         lblP2.setText(game.getP2().getName()+": "+game.getP2().getCharacter());
+        lblTurn.setText(game.whoTurn().getName());
         lblTopLeft.setDisable(false);
         lblTop.setDisable(false);
         lblTopRight.setDisable(false);
@@ -95,18 +100,21 @@ public class PlayboardController implements Initializable {
     private void insert(Coordinate c) throws IOException{
         if(game.getGameMode()==0){
             game.insertChar(c);
+            lblTurn.setText(game.whoTurn().getName());
             resultEvaluation(game.getResult());
             if(game.getResult().equals("STILL PLAYING")){
                 System.out.println(game.getActualBoard());
             }
             if(game.getActualBoard().getRoot().getContent().getCoordinatesOf(' ').size()>0){
                 pcInsert(game.minimaxCoord());
+                lblTurn.setText(game.whoTurn().getName());
                 if(game.getResult().equals("STILL PLAYING")){
                 System.out.println(game.getActualBoard());
                 }
             }
         }else if(game.getGameMode()==1){
             game.insertChar(c);
+            lblTurn.setText(game.whoTurn().getName());
             resultEvaluation(game.getResult());
             if(game.getResult().equals("STILL PLAYING")){
                 System.out.println(game.getActualBoard());
@@ -117,6 +125,7 @@ public class PlayboardController implements Initializable {
     private void pcInsert(Coordinate c) throws IOException {
         disablePanel(c);
         game.insertChar(c);
+        lblTurn.setText(game.whoTurn().getName());
         resultEvaluation(game.getResult());
         if(game.getGameMode()==-1){
             game.setGameMode(-2);
