@@ -43,10 +43,16 @@ public class PlayboardController implements Initializable {
     private Label lblTop;
     
     private Game game;
+    @FXML
+    private Label lblP1;
+    @FXML
+    private Label lblP2;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         game = new Game (new Board(), Reader.getPlayer1(), Reader.getPlayer2(), Reader.getGameMode());
+        lblP1.setText(game.getP1().getName()+": "+game.getP1().getCharacter());
+        lblP2.setText(game.getP2().getName()+": "+game.getP2().getCharacter());
         lblTopLeft.setDisable(false);
         lblTop.setDisable(false);
         lblTopRight.setDisable(false);
