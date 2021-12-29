@@ -48,8 +48,8 @@ public class SettingCharController implements Initializable {
         if (!btX.isSelected()) {
             btSettingFirst.setDisable(true);
         } else {
-            Reader.setPlayer(btX.getText().charAt(0));
-            Reader.setPc(btO.getText().charAt(0));
+            Reader.getPlayer1().setCharacter(btX.getText().charAt(0));
+            Reader.getPlayer2().setCharacter(btO.getText().charAt(0));
             btSettingFirst.setDisable(false);
         }
 
@@ -60,8 +60,8 @@ public class SettingCharController implements Initializable {
         if (!btO.isSelected()) {
             btSettingFirst.setDisable(true);
         } else {
-            Reader.setPlayer(btO.getText().charAt(0));
-            Reader.setPc(btX.getText().charAt(0));
+            Reader.getPlayer1().setCharacter(btO.getText().charAt(0));
+            Reader.getPlayer2().setCharacter(btX.getText().charAt(0));
             btSettingFirst.setDisable(false);
         }
     }

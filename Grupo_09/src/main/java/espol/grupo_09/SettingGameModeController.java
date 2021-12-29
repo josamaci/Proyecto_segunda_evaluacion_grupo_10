@@ -46,6 +46,10 @@ public class SettingGameModeController implements Initializable {
             btSettingChar.setDisable(true);
         } else {
             Reader.setGameMode(1);
+            Reader.getPlayer1().setIsPC(false);
+            Reader.getPlayer2().setIsPC(false);
+            Reader.getPlayer1().setName("PLAYER 1");
+            Reader.getPlayer2().setName("PLAYER 2");
             btSettingChar.setDisable(false);
         }
     }
@@ -56,6 +60,10 @@ public class SettingGameModeController implements Initializable {
             btSettingChar.setDisable(true);
         } else {
             Reader.setGameMode(0);
+            Reader.getPlayer1().setIsPC(false);
+            Reader.getPlayer2().setIsPC(true);
+            Reader.getPlayer1().setName("YOU");
+            Reader.getPlayer2().setName("PC");
             btSettingChar.setDisable(false);
         }
     }
@@ -66,6 +74,10 @@ public class SettingGameModeController implements Initializable {
             btSettingChar.setDisable(true);
         } else {
             Reader.setGameMode(-1);
+            Reader.getPlayer1().setIsPC(true);
+            Reader.getPlayer2().setIsPC(true);
+            Reader.getPlayer1().setName("PC 1");
+            Reader.getPlayer2().setName("PC 2");
             btSettingChar.setDisable(false);
         }
     }

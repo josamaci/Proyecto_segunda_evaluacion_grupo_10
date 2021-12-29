@@ -39,7 +39,15 @@ public class Tree<T> {
     
     @Override
     public String toString(){
-        return this.getRoot().getContent().toString();
+        String s = this.getRoot().getContent().toString();
+        if(this.getChildren()!=null){
+            s += "\n----HIJOS----\n";
+            for(Tree<T> t: this.getChildren()){            
+                s += t.getRoot().getContent().toString();
+            }
+            s += "\n-------------\n";
+        }
+        return s;
     }
-    
+
 }

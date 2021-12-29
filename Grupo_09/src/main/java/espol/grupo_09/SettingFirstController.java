@@ -46,7 +46,8 @@ public class SettingFirstController implements Initializable {
         if (!btYou.isSelected()) {
             btPlayboard.setDisable(true);
         } else {
-            Reader.setStarting(true);
+            Reader.getPlayer1().setIsTurn(true);
+            Reader.getPlayer2().setIsTurn(false);
             btPlayboard.setDisable(false);
         }
 
@@ -57,7 +58,8 @@ public class SettingFirstController implements Initializable {
         if (!btPC.isSelected()) {
             btPlayboard.setDisable(true);
         } else {
-            Reader.setStarting(false);
+            Reader.getPlayer1().setIsTurn(false);
+            Reader.getPlayer2().setIsTurn(true);
             btPlayboard.setDisable(false);
         }
 

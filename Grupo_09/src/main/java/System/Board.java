@@ -1,12 +1,8 @@
 package System;
-
 import TDAs.NodeTree;
 import TDAs.Tree;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.Map;
-
 public class Board {
     Character board[][] = new Character[3][3];
 
@@ -34,9 +30,8 @@ public class Board {
         this.board = board;
     }
     
-    public String insertChar(Coordinate c, Character content){
+    public void insertChar(Coordinate c, Character content){
         board[c.getX()][c.getY()] = content;
-        return winOrLose();
     }
     
     public ArrayList<Coordinate> getCoordinatesOf(Character content){
@@ -63,45 +58,53 @@ public class Board {
         s+="\n";
         return s; 
     }
+
+    public boolean isNotComplete() {
+        return contains(' ');
+    }
     
-    public String winOrLose(){
-        String result = "STILL PLAYING";
-        int i = 3;
-        if(winner(Reader.getPlayer())){
-            i = 0;
-        }else if(winner(Reader.getPc())){
-            i = 1;
-        }else if (!isNotComplete()){
-            i = 2;
+    private boolean contains(Character c){
+        for(int i=0; i<3; i++){
+            for(int j=0; j<3; j++){
+                if(board[i][j].equals(c)){
+                    return true;
+                }
+            }
         }
-        switch(i){
-            case 0:
-                result = "YOU WIN";
-                break;
-            case 1:
-                result = "YOU LOSE";
-                break;
-            case 2:
-                result = "DRAW";
-                break;
-        }
+    return false;
+    }
+    
+    @Override
+    public boolean equals(Object o){
+        Board b = (Board) o;
+        boolean result = false;
+            for(int i=0; i<3; i++){
+                for(int j=0; j<3; j++){
+                    if(board[i][j].equals(b.getBoard()[i][j])){
+                        result = true;
+                    }else{
+                        return false;
+                    }
+                }
+            }
         return result;
     }
     
-    private boolean winner(Character eval){
-        boolean win = false;
-        ArrayList<Coordinate> coordsEval = this.getCoordinatesOf(eval); 
+    private int waysToWin(Character c){
+        int i = 0;
+        ArrayList<Coordinate> coords = this.getCoordinatesOf(c);
+        ArrayList<Coordinate> coordsV = this.getCoordinatesOf(' ');
+        coords.addAll(coordsV);
         ArrayList<ArrayList<Coordinate>> array = winPossibilities();
-        for (ArrayList<Coordinate> c: array){
-            if(coordsEval.containsAll(c)){
-                System.out.println(c);
-                win = true;
+        for(ArrayList<Coordinate> t: array){
+            if(coords.containsAll(t)){
+                i++;
             }
         }
-        return win;
+    return i;
     }
-    
-    private ArrayList<ArrayList<Coordinate>> winPossibilities(){
+  
+    public ArrayList<ArrayList<Coordinate>> winPossibilities(){
         ArrayList<ArrayList<Coordinate>> winPos = new ArrayList<>();
             ArrayList<Coordinate> winPos1 = new ArrayList<>();
             winPos1.add(new Coordinate(0,0));
@@ -154,105 +157,19 @@ public class Board {
             
         return winPos;
     }
-
-    private boolean isNotComplete() {
-        return contains(' ');
-    }
     
-    private boolean contains(Character c){
-        for(int i=0; i<3; i++){
-            for(int j=0; j<3; j++){
-                if(board[i][j].equals(c)){
-                    return true;
-                }
-            }
-        }
-    return false;
+    public int boardUtility(Character you, Character rival){
+        return waysToWin(you) - waysToWin(rival);
     }
     
     public LinkedList<Tree<Board>> generateAlternatives(Character eval){
         LinkedList<Tree<Board>> b = new LinkedList<>();
-            for(Coordinate c:getCoordinatesOf(' ')){
-                Board bi = new Board(this.board);
+            for(Coordinate c:this.getCoordinatesOf(' ')){
+                Board bi = new Board(this.getBoard());
                 bi.insertChar(c, eval);
                 Tree<Board> t = new Tree<>(new NodeTree<>(bi));
                 b.add(t);
             }
         return b;
-    }
-    
-    private int waysToWin(Character c){
-        int i = 0;
-        ArrayList<Coordinate> coords = this.getCoordinatesOf(c);
-        ArrayList<Coordinate> coordsV = this.getCoordinatesOf(' ');
-        coords.addAll(coordsV);
-        ArrayList<ArrayList<Coordinate>> array = winPossibilities();
-        for(ArrayList<Coordinate> t: array){
-            if(coords.containsAll(t)){
-                i++;
-            }
-        }
-    return i;
-    }
-    
-    private int boardUtility(Character you, Character rival){
-        return waysToWin(you) - waysToWin(rival);
-    }
-    
-    public Map<Tree<Board>, Integer> generateMinimax(Character you, Character rival){
-        int i = -100;
-        LinkedList<Tree<Board>> alternativesYou = this.generateAlternatives(you);
-        Map<Tree<Board>, Integer> mapYou = new HashMap<>();
-        if(alternativesYou.size()>1){
-            for(Tree<Board> boa: alternativesYou){
-                int j = 0;
-                LinkedList<Tree<Board>> alternativesRival = boa.getRoot().getContent().generateAlternatives(rival);
-                j = alternativesRival.get(0).getRoot().getContent().boardUtility(you, rival);
-                for(Tree<Board> board: alternativesRival){
-                    mapYou.put(boa, j);
-                    if(board.getRoot().getContent().boardUtility(you, rival)<j){
-                        j = board.getRoot().getContent().boardUtility(you, rival);
-                        mapYou.replace(boa,j);
-                    }
-                }
-            }
-        }else if(alternativesYou.size()==1){
-            mapYou.put(alternativesYou.get(0),0);
-        }
-        return mapYou;
-    }
-    
-    public Board minimax(Character you, Character rival){
-        Map<Tree<Board>, Integer> mapYou = this.generateMinimax(you, rival);
-        Board b = null;
-        if(mapYou.size()>0){
-            int content = -10;
-            for(int i: mapYou.values()){
-                if(i>content){
-                    content = i;
-                }
-            }
-            for(Tree<Board> boa: mapYou.keySet()){
-                if(mapYou.get(boa).equals(content)){
-                    b = new Board(boa.getRoot().getContent().getBoard());
-                }
-            }
-        }
-        return b;
-    }
-    
-    //This is only for PC
-    public Coordinate minimaxCoord(){
-        Coordinate coords = null;
-        ArrayList<Coordinate> newCoords = this.minimax(Reader.getPc(), Reader.getPlayer()).getCoordinatesOf(Reader.getPc());
-        ArrayList<Coordinate> oldCoords = this.getCoordinatesOf(Reader.getPc());
-        if(newCoords!=null){
-            for(Coordinate c: newCoords){
-                if(!oldCoords.contains(c)){
-                    coords = c;
-                }
-            }
-        }
-        return coords;
     }
 }
