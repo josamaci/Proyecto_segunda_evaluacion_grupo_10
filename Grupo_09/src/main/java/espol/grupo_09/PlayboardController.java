@@ -117,7 +117,7 @@ public class PlayboardController implements Initializable {
         resultEvaluation(game.getResult());
         if(game.getGameMode()==-1){
             game.setGameMode(-2);
-            ComputerInsert ci = new ComputerInsert();
+            ComputerInsertPCvsPC ci = new ComputerInsertPCvsPC();
             Thread t = new Thread(ci);
             t.setDaemon(true);
             t.start();
@@ -225,7 +225,7 @@ public class PlayboardController implements Initializable {
         
     }
     
-    private class ComputerInsert implements Runnable{
+    private class ComputerInsertPCvsPC implements Runnable{
         @Override
         public void run(){
             try{
