@@ -107,8 +107,12 @@ public class PlayboardController implements Initializable {
     }
         
     private void pcInsert(Coordinate c) throws IOException {
-        disablePanel(c);
+        if(game.getGameMode()==0){
+            disableButtons();}
+        insertCharOnLabel(c);
         game.insertChar(c);
+        if(game.getGameMode()==0){
+            ableUnusedButtons();}
         lblTurn.setText(game.whoTurn().getName());
         resultEvaluation(game.getResult());
         if(game.getGameMode()==-1){
@@ -120,33 +124,24 @@ public class PlayboardController implements Initializable {
         }
     }
     
-    private void disablePanel(Coordinate c){
+    private void insertCharOnLabel(Coordinate c){
         if(c.equals(new Coordinate(0,0))){
-        lblTopLeft.setDisable(true);
         lblTopLeft.setText(String.valueOf(game.whoTurn().getCharacter()));}
         if(c.equals(new Coordinate(0,1))){
-        lblTop.setDisable(true);
         lblTop.setText(String.valueOf(game.whoTurn().getCharacter()));}
         if(c.equals(new Coordinate(0,2))){
-        lblTopRight.setDisable(true);
         lblTopRight.setText(String.valueOf(game.whoTurn().getCharacter()));}
         if(c.equals(new Coordinate(1,0))){
-        lblLeft.setDisable(true);
         lblLeft.setText(String.valueOf(game.whoTurn().getCharacter()));}
         if(c.equals(new Coordinate(1,1))){
-        lblCenter.setDisable(true);
         lblCenter.setText(String.valueOf(game.whoTurn().getCharacter()));}
         if(c.equals(new Coordinate(1,2))){
-        lblRight.setDisable(true);
         lblRight.setText(String.valueOf(game.whoTurn().getCharacter()));}
         if(c.equals(new Coordinate(2,0))){
-        lblBottomLeft.setDisable(true);
         lblBottomLeft.setText(String.valueOf(game.whoTurn().getCharacter()));}
         if(c.equals(new Coordinate(2,1))){
-        lblBottom.setDisable(true);
         lblBottom.setText(String.valueOf(game.whoTurn().getCharacter()));}
         if(c.equals(new Coordinate(2,2))){
-        lblBottomRight.setDisable(true);
         lblBottomRight.setText(String.valueOf(game.whoTurn().getCharacter()));}
     }
     
@@ -276,5 +271,26 @@ public class PlayboardController implements Initializable {
         lblBottomLeft.setDisable(false);
         lblBottom.setDisable(false);
         lblBottomRight.setDisable(false);
+    }
+    
+    private void ableUnusedButtons(){
+        if(lblTopLeft.getText().equals("")){
+        lblTopLeft.setDisable(false);}
+        if(lblTop.getText().equals("")){
+        lblTop.setDisable(false);}
+        if(lblTopRight.getText().equals("")){
+        lblTopRight.setDisable(false);}
+        if(lblLeft.getText().equals("")){
+        lblLeft.setDisable(false);}
+        if(lblCenter.getText().equals("")){
+        lblCenter.setDisable(false);}
+        if(lblRight.getText().equals("")){
+        lblRight.setDisable(false);}
+        if(lblBottomLeft.getText().equals("")){
+        lblBottomLeft.setDisable(false);}
+        if(lblBottom.getText().equals("")){
+        lblBottom.setDisable(false);}
+        if(lblBottomRight.getText().equals("")){
+        lblBottomRight.setDisable(false);}
     }
 }
