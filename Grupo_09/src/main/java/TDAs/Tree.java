@@ -1,5 +1,6 @@
 package TDAs;
 
+import java.util.Comparator;
 import java.util.LinkedList;
 
 public class Tree<T> {
@@ -50,5 +51,24 @@ public class Tree<T> {
         }
         return s;
     }
-
+    
+    public Tree<T> search(T content, Comparator<T> cmp) {
+        if (this.isEmpty()) {
+            return null;
+        } else {
+            if (cmp.compare(this.root.getContent(), content) == 0) {
+                return this;
+            } else {
+                Tree<T> tmp = null;
+                if (this.getChildren() != null) {
+                    for(Tree<T> t: this.getChildren()){
+                        if (tmp == null) {
+                            tmp = t.search(content, cmp);
+                        }
+                    } 
+                }
+                return tmp;
+            }
+        }
+    }
 }

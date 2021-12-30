@@ -9,13 +9,10 @@ import java.io.IOException;
 import static java.lang.Thread.sleep;
 import java.net.URL;
 import java.util.Optional;
-import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
@@ -65,12 +62,12 @@ public class PlayboardController implements Initializable {
         lblP2.setText(game.getP2().getName()+": "+game.getP2().getCharacter());
         lblTurn.setText(game.whoTurn().getName());
         ableButtons();
-        System.out.println(game.getActualBoard());
+        System.out.println(game.getBoard());
         //PVE y empieza la PC
         if(game.getP2().getIsTurn() && game.getGameMode()==0){
             try {
                 pcInsert(game.minimaxCoord());
-                System.out.println(game.getActualBoard());
+                System.out.println(game.getBoard());
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
@@ -92,19 +89,19 @@ public class PlayboardController implements Initializable {
             lblTurn.setText(game.whoTurn().getName());
             resultEvaluation(game.getResult());
             if(game.getResult().equals("STILL PLAYING")){
-                System.out.println(game.getActualBoard());
+                System.out.println(game.getBoard());
             }
-            if(game.getActualBoard().getRoot().getContent().getCoordinatesOf(' ').size()>0 && game.getResult().equals("STILL PLAYING")){
+            if(game.getBoard().getCoordinatesOf(' ').size()>0 && game.getResult().equals("STILL PLAYING")){
                 pcInsert(game.minimaxCoord());
                 lblTurn.setText(game.whoTurn().getName());
-                System.out.println(game.getActualBoard());
+                System.out.println(game.getBoard());
             }
         }else if(game.getGameMode()==1){
             game.insertChar(c);
             lblTurn.setText(game.whoTurn().getName());
             resultEvaluation(game.getResult());
             if(game.getResult().equals("STILL PLAYING")){
-                System.out.println(game.getActualBoard());
+                System.out.println(game.getBoard());
             }
         }
     }
@@ -155,7 +152,7 @@ public class PlayboardController implements Initializable {
     
     private void resultEvaluation(String result) throws IOException{
         if(!game.getResult().equals("STILL PLAYING")){
-            System.out.println(game.getOriginalBoard());
+            System.out.println(game.getTree());
             Reader.setGameResult(game.getResult());
             App.setRoot("Credits");
         }
@@ -242,7 +239,7 @@ public class PlayboardController implements Initializable {
                         Platform.runLater(()->{
                             try {
                                 pcInsert(game.minimaxCoord());
-                                System.out.println(game.getActualBoard());
+                                System.out.println(game.getBoard());
                             } catch (IOException ex) {
                                 ex.printStackTrace();
                             }

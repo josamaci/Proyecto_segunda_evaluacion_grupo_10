@@ -9,43 +9,43 @@ import java.util.Map;
 import java.util.Random;
 
 public class Game {
-    private Tree<Board> originalBoard;
-    private Tree<Board> actualBoard;
+    private Tree<Board> tree;
+    private Board board;
     private int gameMode;
     private Player p1;
     private Player p2;
     private String result;
-
+    
     public Game(Tree<Board> board, Player p1, Player p2, int gameMode) {
-        this.originalBoard = board;
-        this.actualBoard = this.originalBoard;
+        this.tree = board;
+        this.board = tree.getRoot().getContent();
         this.gameMode = gameMode;
         this.p1 = p1;
         this.p2 = p2;
     }
     
     public Game(Board board, Player p1, Player p2, int gameMode) {
-        this.originalBoard = new Tree<Board>(new NodeTree<>(board));
-        this.actualBoard = this.originalBoard;
+        this.tree = new Tree(new NodeTree(board));
+        this.board = tree.getRoot().getContent();
         this.gameMode = gameMode;
         this.p1 = p1;
         this.p2 = p2;
     }
 
-    public Tree<Board> getOriginalBoard() {
-        return originalBoard;
+    public Tree<Board> getTree() {
+        return tree;
     }
 
-    public void setOriginalBoard(Tree<Board> originalBoard) {
-        this.originalBoard = originalBoard;
+    public void setTree(Tree<Board> tree) {
+        this.tree = tree;
     }
 
-    public Tree<Board> getActualBoard() {
-        return actualBoard;
+    public Board getBoard() {
+        return board;
     }
 
-    public void setActualBoard(Tree<Board> actualBoard) {
-        this.actualBoard = actualBoard;
+    public void setBoard(Board board) {
+        this.board = board;
     }
 
     public Player getP1() {
@@ -72,17 +72,21 @@ public class Game {
         this.gameMode = gameMode;
     }
     
-    public void insertChar(Coordinate c){
-        if(actualBoard.getChildren()==null){
-            generateAlternatives(whoTurn());
+    public void generateAlternatives(){
+        Tree<Board> tmp = tree.search(board, (Board b1, Board b2)->{return b1.equals(b2) ? 0:1;});
+        if(tmp.getChildren()==null){
+            LinkedList<Tree<Board>> b = tmp.getRoot().getContent().generateAlternatives(whoTurn().getCharacter());
+            tmp.getRoot().setChildren(b);
         }
-        Tree<Board> t = new Tree();
-        Board b = new Board(actualBoard.getRoot().getContent().getBoard());
+    }
+    
+    public void insertChar(Coordinate c){
+        generateAlternatives();
+        Board b = new Board(board.getBoard());
         b.insertChar(c,whoTurn().getCharacter());
-        t.setRoot(new NodeTree<>(b));
-        for(Tree<Board> tb : actualBoard.getChildren()){
-            if(tb.getRoot().getContent().equals(b))
-            actualBoard = tb;
+        Tree<Board> tb = tree.search(b, (Board b1, Board b2)->{return b1.equals(b2) ? 0:1;});
+        if(tb!= null && tb.getRoot().getContent().equals(b)){
+            board = tb.getRoot().getContent();
         }
         switchTurn();
         winOrLose();
@@ -106,15 +110,15 @@ public class Game {
             }else{
                 result = p2.getName()+" WIN";
             }
-        }else if (!actualBoard.getRoot().getContent().isNotComplete()){
+        }else if (!board.isNotComplete()){
             result = "DRAW";
         }
     }
     
     private boolean winner(Player eval){
         boolean win = false;
-        ArrayList<Coordinate> coordsEval = actualBoard.getRoot().getContent().getCoordinatesOf(eval.getCharacter()); 
-        ArrayList<ArrayList<Coordinate>> arrayWins = actualBoard.getRoot().getContent().winPossibilities();
+        ArrayList<Coordinate> coordsEval = board.getCoordinatesOf(eval.getCharacter()); 
+        ArrayList<ArrayList<Coordinate>> arrayWins = board.winPossibilities();
         for (ArrayList<Coordinate> c: arrayWins){
             if(coordsEval.containsAll(c)){
                 win = true;
@@ -123,43 +127,34 @@ public class Game {
         return win;
     }
     
-    public void generateAlternatives(Player eval){
-        if(actualBoard!=originalBoard){
-            LinkedList<Tree<Board>> b = actualBoard.getRoot().getContent().generateAlternatives(eval.getCharacter());
-            actualBoard.getRoot().setChildren(b);
-        }else{
-            LinkedList<Tree<Board>> b = originalBoard.getRoot().getContent().generateAlternatives(eval.getCharacter());
-            originalBoard.getRoot().setChildren(b);
-        }
-    }
-    
-    public Map<Tree<Board>, Integer> generateMinimax(Player you, Player rival){
+    public Map<Tree<Board>, Integer> generateMinimax(){
         int i = -100;
+        Tree<Board> tmp = tree.search(board, (Board b1, Board b2)->{return b1.equals(b2) ? 0:1;});
         Map<Tree<Board>, Integer> mapYou = new HashMap<>();
-        if(actualBoard.getChildren()==null){
-        generateAlternatives(you);
+        if(tmp.getChildren()==null){
+            generateAlternatives();
         }
-        if(actualBoard.getChildren().size()>1){
-            for(Tree<Board> boa: actualBoard.getChildren()){
+        if(tmp.getChildren().size()>1){
+            for(Tree<Board> boa: tmp.getChildren()){
                 int j = 0;
-                LinkedList<Tree<Board>> alternativesRival = boa.getRoot().getContent().generateAlternatives(rival.getCharacter());
-                j = alternativesRival.get(0).getRoot().getContent().boardUtility(you.getCharacter(), rival.getCharacter());
+                LinkedList<Tree<Board>> alternativesRival = boa.getRoot().getContent().generateAlternatives(nextTurn().getCharacter());
+                j = alternativesRival.get(0).getRoot().getContent().boardUtility(whoTurn().getCharacter(), nextTurn().getCharacter());
                 for(Tree<Board> board: alternativesRival){
                     mapYou.put(boa, j);
-                    if(board.getRoot().getContent().boardUtility(you.getCharacter(), rival.getCharacter())<j){
-                        j = board.getRoot().getContent().boardUtility(you.getCharacter(), rival.getCharacter());
+                    if(board.getRoot().getContent().boardUtility(whoTurn().getCharacter(), nextTurn().getCharacter())<j){
+                        j = board.getRoot().getContent().boardUtility(whoTurn().getCharacter(), nextTurn().getCharacter());
                         mapYou.replace(boa,j);
                     }
                 }
             }
-        }else if(actualBoard.getChildren().size()==1){
-            mapYou.put(actualBoard.getChildren().get(0),0);
+        }else if(tmp.getChildren().size()==1){
+            mapYou.put(tmp.getChildren().get(0),0);
         }
         return mapYou;
     }
     
-    public Tree<Board> minimax(Player you, Player rival){
-        Map<Tree<Board>, Integer> mapYou = this.generateMinimax(p2, p1);
+    public Tree<Board> minimax(){
+        Map<Tree<Board>, Integer> mapYou = this.generateMinimax();
         LinkedList<Tree<Board>> choosenList = new LinkedList<>();
         Tree<Board> b = null;
         if(mapYou.size()>0){
@@ -190,8 +185,8 @@ public class Game {
     public Coordinate minimaxCoord(){
         Coordinate coords = new Coordinate();
         if(whoTurn().getIsPC()){
-            ArrayList<Coordinate> newCoords = this.minimax(whoTurn(), nextTurn()).getRoot().getContent().getCoordinatesOf(p2.getCharacter());
-            ArrayList<Coordinate> oldCoords = actualBoard.getRoot().getContent().getCoordinatesOf(p2.getCharacter());
+            ArrayList<Coordinate> newCoords = this.minimax().getRoot().getContent().getCoordinatesOf(whoTurn().getCharacter());
+            ArrayList<Coordinate> oldCoords = tree.search(board, (Board b1, Board b2)->{return b1.equals(b2) ? 0:1;}).getRoot().getContent().getCoordinatesOf(whoTurn().getCharacter());
             if(newCoords!=null && oldCoords!=null){
                 for(Coordinate c: newCoords){
                     if(!oldCoords.contains(c)){
