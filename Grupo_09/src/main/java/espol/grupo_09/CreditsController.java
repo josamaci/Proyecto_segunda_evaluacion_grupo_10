@@ -19,6 +19,8 @@ public class CreditsController implements Initializable {
     private Label lblWinLose;
     @FXML
     private Button btMainMenu;
+    @FXML
+    private Button btShowRecord;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -28,6 +30,11 @@ public class CreditsController implements Initializable {
     @FXML
     private void backToTheTitle(ActionEvent event) throws IOException {
         App.setRoot("MainMenu");
+    }
+
+    @FXML
+    private void showGameRecord(ActionEvent event) throws IOException{
+        App.setRoot("GameRecord");
     }
 
 }

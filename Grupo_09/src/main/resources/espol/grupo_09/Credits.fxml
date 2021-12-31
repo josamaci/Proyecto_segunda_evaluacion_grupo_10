@@ -24,6 +24,14 @@
                   <Font name="System Bold" size="21.0" />
                </font>
             </Button>
+            <Button fx:id="btShowRecord" mnemonicParsing="false" onAction="#showGameRecord" prefHeight="40.0" prefWidth="52.0" styleClass="yellowButton" stylesheets="@../../Styles/Buttons.css" text="i" textFill="WHITE">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Bold Italic" size="21.0" />
+               </font>
+            </Button>
          </children>
       </VBox>
    </children>

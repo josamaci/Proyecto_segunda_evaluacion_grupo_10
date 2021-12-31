@@ -5,20 +5,19 @@ import System.Coordinate;
 import System.FileManager;
 import System.Game;
 import System.Reader;
+import TDAs.Tree;
 import java.io.IOException;
 import static java.lang.Thread.sleep;
 import java.net.URL;
-import java.util.Optional;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.WindowEvent;
 
 public class PlayboardController implements Initializable {
 
@@ -54,7 +53,8 @@ public class PlayboardController implements Initializable {
     private Label lblP11;
     @FXML
     private Label lblTurn;
-
+    public static ArrayList<Board> boards = new ArrayList<>();
+    public static String sTree = "";
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         game = new Game(new Board(), Reader.getPlayer1(), Reader.getPlayer2(), Reader.getGameMode());
@@ -63,11 +63,13 @@ public class PlayboardController implements Initializable {
         lblTurn.setText(game.whoTurn().getName());
         ableButtons();
         System.out.println(game.getBoard());
+        boards.add(game.getBoard());
         //PVE y empieza la PC
         if (game.getP2().getIsTurn() && game.getGameMode() == 0) {
             try {
                 pcInsert(game.minimaxCoord());
                 System.out.println(game.getBoard());
+                boards.add(game.getBoard());
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
@@ -90,11 +92,13 @@ public class PlayboardController implements Initializable {
             resultEvaluation(game.getResult());
             if (game.getResult().equals("STILL PLAYING")) {
                 System.out.println(game.getBoard());
+                boards.add(game.getBoard());
             }
             if (game.getBoard().getCoordinatesOf(' ').size() > 0 && game.getResult().equals("STILL PLAYING")) {
                 pcInsert(game.minimaxCoord());
                 lblTurn.setText(game.whoTurn().getName());
                 System.out.println(game.getBoard());
+                boards.add(game.getBoard());
             }
         } else if (game.getGameMode() == 1) {
             game.insertChar(c);
@@ -102,6 +106,7 @@ public class PlayboardController implements Initializable {
             resultEvaluation(game.getResult());
             if (game.getResult().equals("STILL PLAYING")) {
                 System.out.println(game.getBoard());
+                boards.add(game.getBoard());
             }
         }
         try {
@@ -169,6 +174,8 @@ public class PlayboardController implements Initializable {
     private void resultEvaluation(String result) throws IOException {
         if (!game.getResult().equals("STILL PLAYING")) {
             System.out.println(game.getTree());
+            //sTree=game.getTree().toString();
+            boards.add(game.getBoard());
             Reader.setGameResult(game.getResult());
             App.setRoot("Credits");
         }
@@ -242,6 +249,7 @@ public class PlayboardController implements Initializable {
     private void surrender(MouseEvent event) throws IOException {
         game.setResult(game.whoTurn().getName() + " LOSE");
         Reader.setGameResult(game.getResult());
+        boards.add(game.getBoard());
         App.setRoot("Credits");
 
     }
@@ -256,7 +264,9 @@ public class PlayboardController implements Initializable {
                     Platform.runLater(() -> {
                         try {
                             pcInsert(game.minimaxCoord());
+                            boards.add(game.getBoard());
                             System.out.println(game.getBoard());
+                            
                         } catch (IOException ex) {
                             ex.printStackTrace();
                         }
