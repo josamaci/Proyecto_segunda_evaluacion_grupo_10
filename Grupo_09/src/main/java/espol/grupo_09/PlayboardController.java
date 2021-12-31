@@ -84,6 +84,7 @@ public class PlayboardController implements Initializable {
                 ex.printStackTrace();
             }
         }
+         
     }
 
     private void insert(Coordinate c) throws IOException {
@@ -175,6 +176,7 @@ public class PlayboardController implements Initializable {
     private void resultEvaluation(String result) throws IOException {
         if (!game.getResult().equals("STILL PLAYING")) {
             System.out.println(game.getTree());
+            sTree=game.minimax().toString();
             //sTree=game.getTree().toString();
             boards.add(game.getBoard());
             Reader.setGameResult(game.getResult());

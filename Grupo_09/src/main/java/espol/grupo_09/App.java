@@ -14,6 +14,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+        FileManager.checkLastSave();
         scene = new Scene(loadFXML("MainMenu"), 360, 640);
         stage.setScene(scene);
         stage.setResizable(false);
