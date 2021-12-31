@@ -27,7 +27,7 @@ public class GameRecordController implements Initializable {
     @FXML
     private TextArea txtGeneratedTree;
     @FXML
-    private Button btMainMenu;
+    private Button btBackToCredits;
     /**
      * Initializes the controller class.
      */
@@ -38,11 +38,7 @@ public class GameRecordController implements Initializable {
         fillMovements();
         fillGeneratedTree();
     }    
-    
-    @FXML
-    private void backToTheTitle(ActionEvent event) throws IOException {
-        App.setRoot("MainMenu");
-    }
+   
 
     private void fillMovements() {
         String result = "";
@@ -55,6 +51,11 @@ public class GameRecordController implements Initializable {
     private void fillGeneratedTree() {
         txtGeneratedTree.setText(PlayboardController.sTree);
         
+    }
+
+    @FXML
+    private void swithToCredits(ActionEvent event) throws IOException {
+        App.setRoot("Credits");
     }
 
 }

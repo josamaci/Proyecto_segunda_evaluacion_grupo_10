@@ -22,10 +22,10 @@ public class FileManager {
 
     public static void saveGame(Game game) throws FileNotFoundException, IOException {
         try {
-            
             ObjectOutputStream charger = new ObjectOutputStream(new FileOutputStream("src/main/resources/savedata/game.bin"));
-            charger.writeObject(game.toString());
+            charger.writeObject(game.getResult());
             charger.close();
+
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
         } catch (IOException e) {
@@ -37,7 +37,7 @@ public class FileManager {
         try {
             ObjectInputStream loader = new ObjectInputStream(new FileInputStream("src/main/resources/savedata/game.bin"));
             String a = (String) loader.readObject();
-            loader.close();           
+            loader.close();
             return a;
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
@@ -48,7 +48,7 @@ public class FileManager {
         }
         return null;
     }
-    
+
     public static void checkLastSave() throws IOException {
         if (FileManager.loadGame() != null) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);

@@ -1,5 +1,6 @@
 package espol.grupo_09;
 
+import System.FileManager;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -19,7 +20,11 @@ public class MainMenuController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        try {
+            FileManager.checkLastSave();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
     @FXML

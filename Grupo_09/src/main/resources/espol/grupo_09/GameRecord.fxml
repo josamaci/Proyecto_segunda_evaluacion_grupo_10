@@ -36,12 +36,12 @@
                </font>
             </Label>
             <TextArea fx:id="txtGeneratedTree" prefHeight="202.0" prefWidth="360.0" styleClass="centeredTextArea" stylesheets="@../../Styles/TextArea.css" />
-            <Button fx:id="btMainMenu" mnemonicParsing="false" onAction="#backToTheTitle" prefHeight="60.0" prefWidth="160.0" styleClass="changeButton" stylesheets="@../../Styles/buttons.css" text="Main Menu" textFill="WHITE">
+            <Button fx:id="btBackToCredits" mnemonicParsing="false" onAction="#swithToCredits" prefHeight="72.0" prefWidth="76.0" styleClass="changeButton" stylesheets="@../../Styles/buttons.css" text="←" textFill="WHITE">
                <VBox.margin>
                   <Insets top="5.0" />
                </VBox.margin>
                <font>
-                  <Font name="System Bold" size="21.0" />
+                  <Font name="System Bold" size="33.0" />
                </font>
             </Button>
          </children>
