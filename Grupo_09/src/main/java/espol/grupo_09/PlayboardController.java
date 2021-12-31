@@ -57,6 +57,7 @@ public class PlayboardController implements Initializable {
     public static String sTree = "";
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        boards.clear();
         game = new Game(new Board(), Reader.getPlayer1(), Reader.getPlayer2(), Reader.getGameMode());
         lblP1.setText(game.getP1().getName() + ": " + game.getP1().getCharacter());
         lblP2.setText(game.getP2().getName() + ": " + game.getP2().getCharacter());
