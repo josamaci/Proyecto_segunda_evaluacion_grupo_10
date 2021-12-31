@@ -10,6 +10,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.Optional;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 
 /**
  *
@@ -17,11 +20,11 @@ import java.io.ObjectOutputStream;
  */
 public class FileManager {
 
-    public static void saveGame() throws FileNotFoundException, IOException {
-        Game g = new Game(new Board(), Reader.getPlayer1(), Reader.getPlayer2(), Reader.getGameMode());
+    public static void saveGame(Game game) throws FileNotFoundException, IOException {
         try {
+            
             ObjectOutputStream charger = new ObjectOutputStream(new FileOutputStream("src/main/resources/savedata/game.bin"));
-            charger.writeObject(g);
+            charger.writeObject(game.toString());
             charger.close();
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
@@ -30,12 +33,12 @@ public class FileManager {
         }
     }
 
-    public static Game loadGame() {
+    public static String loadGame() {
         try {
             ObjectInputStream loader = new ObjectInputStream(new FileInputStream("src/main/resources/savedata/game.bin"));
-            Game g = (Game) loader.readObject();
-            loader.close();
-            return g;
+            String a = (String) loader.readObject();
+            loader.close();           
+            return a;
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
         } catch (IOException e) {
@@ -45,5 +48,18 @@ public class FileManager {
         }
         return null;
     }
+    
+    public static void checkLastSave() throws IOException {
+        if (FileManager.loadGame() != null) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Hey!");
+            alert.setHeaderText("The last game wasn't finished, wanna reload it?");
+            Optional<ButtonType> option = alert.showAndWait();
+            if (option.get() == ButtonType.OK) {
+                System.out.println("Loading last save...");
+                System.out.println(FileManager.loadGame());
+            }
+        }
 
+    }
 }
